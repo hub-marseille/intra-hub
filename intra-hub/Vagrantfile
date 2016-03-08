@@ -1,0 +1,54 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = '2'
+
+@script = <<SCRIPT
+DOCUMENT_ROOT_ZEND="/var/www/intra-hub/intra-hub/public"
+apt-get update
+apt-get install -y apache2 git curl php5-cli php5 php5-intl libapache2-mod-php5
+echo "
+<VirtualHost *:80>
+        ServerAdmin webmaster@localhost
+        ServerName  intra-hub.localhost
+        DocumentRoot $DOCUMENT_ROOT_ZEND
+        DirectoryIndex  index.php
+        RewriteEngine off
+        <Location />
+                RewriteEngine On
+                RewriteCond %{REQUEST_FILENAME} -s [OR]
+                RewriteCond %{REQUEST_FILENAME} -l [OR]
+                RewriteCond %{REQUEST_FILENAME} -d
+                RewriteRule ^.*$ - [NC,L]
+                RewriteRule ^.*$ /index.php [NC,L]
+        </Location>
+        <Directory $DOCUMENT_ROOT_ZEND>
+                   Require all granted
+        </Directory>
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+" > /etc/apache2/sites-available/intra-hub.conf
+a2enmod rewrite
+a2dissite 000-default.conf
+a2ensite intra-hub.conf
+service apache2 restart
+cd /var/www/intra-hub/intra-hub
+curl -Ss https://getcomposer.org/installer | php
+php composer.phar install --no-progress
+echo "** [ZEND] Visit http://localhost:8085 in your browser for to view the application **"
+apt-get install emacs
+SCRIPT
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.box = 'bento/ubuntu-14.04'
+  config.vm.network "forwarded_port", guest: 80, host: 8085
+  config.vm.hostname = "intra-hub.localhost"
+  config.vm.synced_folder '.', '/var/www/intra-hub/intra-hub'
+  config.vm.provision 'shell', inline: @script
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.customize ["modifyvm", :id, "--memory", "2048"]
+  end
+
+end
