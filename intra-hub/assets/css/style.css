@@ -1,0 +1,45 @@
+.shadow-on-hover:hover
+{
+   box-shadow: 0 16px 28px 0 rgba(0,0,0,0.22),0 25px 55px 0 rgba(0,0,0,0.21);
+   transition: 0.5s;
+   -webkit-transition: 0.5s;
+}
+
+.logo-wrapper
+{
+   width: auto;
+   height: 100%;
+   display: flex;
+   align-items: center;
+}
+
+.epitech-logo
+{
+   margin-top: 10%;
+   height: 80%;
+   width: auto;
+}
+
+.card.hidden
+{
+   transition: 0.5s;
+   opacity: 0;
+   display: none;
+}
+
+.project-info
+{
+   animation: slide-from-right 0.5s;
+   background-color: rgba(100, 100, 100, 0.7);
+}
+
+.clickable
+{
+   cursor: pointer;
+}
+
+@keyframes slide-from-right
+{
+   from {margin-left: 100%;}
+   to {margin-left: 0%;}
+}
