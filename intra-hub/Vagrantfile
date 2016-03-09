@@ -4,14 +4,14 @@
 VAGRANTFILE_API_VERSION = '2'
 
 @script = <<SCRIPT
-DOCUMENT_ROOT_ZEND="/var/www/intra-hub/intra-hub/public"
+DOCUMENT_ROOT="/var/www/intra-hub/intra-hub/"
 apt-get update
 apt-get install -y apache2 git curl php5-cli php5 php5-intl libapache2-mod-php5
 echo "
 <VirtualHost *:80>
         ServerAdmin webmaster@localhost
         ServerName  intra-hub.localhost
-        DocumentRoot $DOCUMENT_ROOT_ZEND
+        DocumentRoot $DOCUMENT_ROOT
         DirectoryIndex  index.php
         RewriteEngine off
         <Location />
@@ -22,7 +22,7 @@ echo "
                 RewriteRule ^.*$ - [NC,L]
                 RewriteRule ^.*$ /index.php [NC,L]
         </Location>
-        <Directory $DOCUMENT_ROOT_ZEND>
+        <Directory $DOCUMENT_ROOT>
                    Require all granted
         </Directory>
         ErrorLog ${APACHE_LOG_DIR}/error.log
@@ -36,7 +36,7 @@ service apache2 restart
 cd /var/www/intra-hub/intra-hub
 curl -Ss https://getcomposer.org/installer | php
 php composer.phar install --no-progress
-echo "** [ZEND] Visit http://localhost:8085 in your browser for to view the application **"
+echo "** Visit http://localhost:8085 in your browser for to view the application **"
 apt-get install emacs
 SCRIPT
 
