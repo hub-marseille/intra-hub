@@ -14,10 +14,17 @@ app.controller("intraCtrl", function($scope)
 
    request.onload = function()
    {
+      var ret;
+
       if (request.status >= 200 && request.status < 400)
       {
+         ret = JSON.parse(request.responseText);
          console.log(request.status);
-         $scope.projects = JSON.parse(request.responseText).projects;
+         if (ret.succes)
+         {
+            $scope.projects = ret.projects;
+            $scope.$apply();
+         }
       }
    }
    request.open("GET", "projects/all_projects", true);
