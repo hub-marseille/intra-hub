@@ -1,12 +1,13 @@
 <?php
 
-class Log extends CI_Controller
+class Users extends CI_Controller
 {
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('log_model');
+		$this->load->model('users_model');
+		$this->load->library('encrypt');
 	}
 
 	public function index()
@@ -14,19 +15,19 @@ class Log extends CI_Controller
 		echo 'Log index';
 	}
 
-	public function in()
+	public function signin()
 	{
 		$login = $this->input->post('login');
-		$password = $this->input->post('password');
-		
-		$result = $this->log_model->in($login, $password);
+		$password = sha1($this->input->post('password'));
+
+		$result = $this->users_model->signin($login, $password);
 
 		if (count($result) > 0)
 		   {
 			$data = array(
-			      'id' => $result[0]->id,
-			      'username' => $result[0]->username,
-			      'user_right' => $result[0]->user_right
+			      'id' => $result[0]['id'],
+			      'username' => $result[0]['username'],
+			      'user_right' => $result[0]['user_right']
 			);
 
 			$this->session->set_userdata($data);
@@ -45,14 +46,8 @@ class Log extends CI_Controller
 		}
 	}
 
-	public function out()
+	public function signout()
 	{
-		$data = array(
-		      'id' => '',
-		      'username' => '',
-		      'user_right' => ''
-		 );
-
 		 $this->session->sess_destroy();
 
 		 echo '{
