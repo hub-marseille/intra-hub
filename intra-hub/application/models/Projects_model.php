@@ -9,18 +9,13 @@ class Projects_model extends CI_Model
 
 	public function all_projects()
 	{
-		$data = array(
-		      'deleted' => NULL
-		);
-	
-		$query = $this->db->get_where('t_projects', $data);
+		$res = $this->db->where(array('deleted' => NULL))
+				->or_where(array('deleted' => false))
+				->get('t_projects')
+				->result_array();
 
-		$result = array();
-
-		foreach ($query->result() as $row)
-			$result[] = $row;
 	
-		return $result;
+		return $res;
 	}
 
 	public function projects_by_status($state)
