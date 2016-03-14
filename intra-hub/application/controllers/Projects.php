@@ -20,8 +20,8 @@ class Projects extends CI_Controller
 		$result = $this->projects_model->all_projects();
 
 		echo '{
-		     success: true,
-		     projects: '.json_encode($result).'
+		     "success": true,
+		     "projects": '.json_encode($result).'
 		}';
 	}
 
@@ -51,9 +51,9 @@ class Projects extends CI_Controller
 	public function add_project()
 	{
 		$current_user = $this->session->userdata('id');
-		
+
 		if (is_numeric($current_user) && $current_user > 0) {
-		
+
 			$data = array(
 		      	      'name' => $this->input->post('name'),
 		      	      'main_picture' => $this->input->post('main_picture'),
@@ -62,14 +62,14 @@ class Projects extends CI_Controller
 		      	      'id_status' => 1,
 			      'id_owner' => $current_user
 			);
-			   
+
 			$this->projects_model->add_project($data);
 
 			echo '{
 			     success: true,
 		      	     errormsg: "OK"
 			}';
-			
+
 		} else {
 		  //redirect
 		  echo 'Redirect';
@@ -80,9 +80,9 @@ class Projects extends CI_Controller
 	public function delete_project()
 	{
 		$current_user = $this->session->userdata('id');
-		
+
 		if (is_numeric($current_user) && $current_user > 0) {
-		
+
 			$id = $this->input->post('id');
 
 			$this->projects_model->delete_project($id);
@@ -91,7 +91,7 @@ class Projects extends CI_Controller
 			     success: true,
 		      	     errormsg: "OK"
 			}';
-			
+
 		} else {
 		  //redirect
 		  echo 'Redirect';
@@ -102,11 +102,11 @@ class Projects extends CI_Controller
 	public function update_project()
 	{
 		$current_user = $this->session->userdata('id');
-		
+
 		if (is_numeric($current_user) && $current_user > 0) {
 
 		   	$data = array();
-			
+
 			$name = $this->input->post('name');
 			$main_picture = $this->input->post('main_picture');
 			$description = $this->input->post('description');
@@ -123,7 +123,7 @@ class Projects extends CI_Controller
 			   $data['short_description'] = $short_description;
 			if ($id_status != '' && $id_status != NULL)
 			   $data['id_status'] = $id_status;
-			   
+
 			if (count($data) == 0)
 			   die('{
 			   	success: true,
@@ -138,7 +138,7 @@ class Projects extends CI_Controller
 			     success: true,
 		      	     errormsg: "OK"
 			}';
-			
+
 		} else {
 		  //redirect
 		  echo 'Redirect';
@@ -148,9 +148,9 @@ class Projects extends CI_Controller
 	public function next_status()
 	{
 		$current_user = $this->session->userdata('id');
-		
+
 		if (is_numeric($current_user) && $current_user > 0) {
-		
+
 		   $id = $this->input->post('id');
 		   $this->project_model->next_status($id);
 

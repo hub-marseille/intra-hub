@@ -4,6 +4,7 @@
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css"  media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="assets/css/style.css"  media="screen,projection"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
   <body ng-controller="intraCtrl">
@@ -26,14 +27,34 @@
              </div>
            </div>
          </div>
-         <div class="project-info" ng-hide="current == null">
-            <h3 class="clickable" ng-click="current = null">Retourner sur les projets</h3>
+      </div>
+      <div class="project-info" ng-hide="current == null">
+         <div class="container borded">
+            <div class="go-back" ng-click="current = null">
+               <h5><a>Retourner sur les projets</a></h5>
+            </div>
+            <div class="short-info">
+               <div class="project-slider">
+                  <img class="project-img" ng-src="{{'assets/images/projets/' + current.main_picture}}"/>
+               </div>
+               <div class="project-short-info">
+                  <div class="flow-text">Nom du projet: {{current.name}}</div>
+                  <div class="flow-text">Cree le : {{current.creation_date}}</div>
+                  <div class="flow-text">Createur: {{current.owner}}</div>
+               </div>
+            </div>
+            <div class="project-description">
+               <h5>Description</h5>
+               <p class="flow-text">
+                  {{current.description}}
+            </p>
+            </div>
          </div>
       </div>
     <!-- libs -->
-    <script type="text/javascript" src="assets/js/libraries/angular.min.js"></script>
     <script type="text/javascript" src="assets/js/libraries/jquery-2.2.1.min.js"></script>
     <script type="text/javascript" src="assets/js/libraries/materialize.min.js"></script>
+    <script type="text/javascript" src="assets/js/libraries/angular.min.js"></script>
     <!-- ctrl & directives angular -->
     <script type="text/javascript" src="assets/js/intraCtrl.js"></script>
   </body>

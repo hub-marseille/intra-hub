@@ -5,13 +5,12 @@ app.controller("intraCtrl", function($scope)
    $scope.current = null;
    $scope.projects = [];
 
+   var request = new XMLHttpRequest();
+
    $scope.setCurrent = function(nc)
    {
       $scope.current = nc;
    }
-
-   var request = new XMLHttpRequest();
-
    request.onload = function()
    {
       var ret;
@@ -19,145 +18,13 @@ app.controller("intraCtrl", function($scope)
       if (request.status >= 200 && request.status < 400)
       {
          ret = JSON.parse(request.responseText);
-         console.log(request.status);
-         if (ret.succes)
+         if (ret.success)
          {
             $scope.projects = ret.projects;
             $scope.$apply();
          }
       }
    }
-   request.open("GET", "projects/all_projects", true);
+   request.open("GET", "index.php/projects/all_projects", true);
    request.send();
-
-//    $scope.projects = [
-//       {
-//          id: 34834208,
-//          name: "Un super projet",
-//          main_picture: "chien.jpg",
-//          description: "Un super projet de la mort",
-//          short_description: "projet",
-//          owner: "titi"
-//       },
-//       {
-//          id: 34834208,
-//          name: "Un autre projet",
-//          main_picture: "chat.jpg",
-//          description: "Un super projet de la mort",
-//          short_description: "projet",
-//          owner: "titi"
-//       },
-//       {
-//          id: 34834208,
-//          name: "Un 3e projet",
-//          main_picture: "chien.jpg",
-//          description: "Un super projet de la mort",
-//          short_description: "projet",
-//          owner: "titi"
-//       },
-//       {
-//          id: 34834208,
-//          name: "Un 3e projet",
-//          main_picture: "chien.jpg",
-//          description: "Un super projet de la mort",
-//          short_description: "projet",
-//          owner: "titi"
-//       },
-//       {
-//          id: 34834208,
-//          name: "Un 3e projet",
-//          main_picture: "chien.jpg",
-//          description: "Un super projet de la mort",
-//          short_description: "projet",
-//          owner: "titi"
-//       },
-//       {
-//          id: 34834208,
-//          name: "Un 3e projet",
-//          main_picture: "chien.jpg",
-//          description: "Un super projet de la mort",
-//          short_description: "projet",
-//          owner: "titi"
-//       },
-//       {
-//          id: 34834208,
-//          name: "Un 3e projet",
-//          main_picture: "chien.jpg",
-//          description: "Un super projet de la mort",
-//          short_description: "projet",
-//          owner: "titi"
-//       },
-//       {
-//          id: 34834208,
-//          name: "Un 3e projet",
-//          main_picture: "chien.jpg",
-//          description: "Un super projet de la mort",
-//          short_description: "projet",
-//          owner: "titi"
-//       },
-//       {
-//          id: 34834208,
-//          name: "Un 3e projet",
-//          main_picture: "chien.jpg",
-//          description: "Un super projet de la mort",
-//          short_description: "projet",
-//          owner: "titi"
-//       },
-//       {
-//          id: 34834208,
-//          name: "Un 3e projet",
-//          main_picture: "chien.jpg",
-//          description: "Un super projet de la mort",
-//          short_description: "projet",
-//          owner: "titi"
-//       },
-//       {
-//          id: 34834208,
-//          name: "Un 3e projet",
-//          main_picture: "chien.jpg",
-//          description: "Un super projet de la mort",
-//          short_description: "projet",
-//          owner: "titi"
-//       },
-//       {
-//          id: 34834208,
-//          name: "Un 3e projet",
-//          main_picture: "chien.jpg",
-//          description: "Un super projet de la mort",
-//          short_description: "projet",
-//          owner: "titi"
-//       },
-//       {
-//          id: 34834208,
-//          name: "Un 3e projet",
-//          main_picture: "chien.jpg",
-//          description: "Un super projet de la mort",
-//          short_description: "projet",
-//          owner: "titi"
-//       },
-//       {
-//          id: 34834208,
-//          name: "Un 3e projet",
-//          main_picture: "chien.jpg",
-//          description: "Un super projet de la mort",
-//          short_description: "projet",
-//          owner: "titi"
-//       },
-//       {
-//          id: 34834208,
-//          name: "Un 3e projet",
-//          main_picture: "chien.jpg",
-//          description: "Un super projet de la mort",
-//          short_description: "projet",
-//          owner: "titi"
-//       },
-//       {
-//          id: 34834208,
-//          name: "Un quatrieme projet",
-//          main_picture: "chien.jpg",
-//          description: "Un super projet de la mort",
-//          short_description: "projet",
-//          owner: "titi"
-//       }
-//    ]
 });

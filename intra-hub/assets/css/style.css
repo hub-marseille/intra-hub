@@ -29,8 +29,30 @@
 
 .project-info
 {
-   animation: slide-from-right 0.5s;
-   background-color: rgba(100, 100, 100, 0.7);
+   position: absolute;
+   z-index: 5;
+   top: 64px;
+   left: 0;
+   padding-bottom: auto;
+   min-height: 100%;
+   width: 100%;
+   transition: 0.5s;
+   animation: slide-from-top 0.5s;
+}
+
+.project-info .container
+{
+   height: 100%;
+}
+
+.go-back
+{
+   display: flex;
+   margin: 20px;
+   justify-content: flex-end;
+   width: calc(100% - 40px);
+   max-height: 100px;
+   cursor: pointer;
 }
 
 .clickable
@@ -38,8 +60,41 @@
    cursor: pointer;
 }
 
-@keyframes slide-from-right
+.short-info
 {
-   from {margin-left: 100%;}
-   to {margin-left: 0%;}
+   flex-grow: 1;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+}
+
+.project-slider
+{
+   min-width: 400px;
+}
+
+.project-img
+{
+   max-width: 600px;
+   max-height: 100%;
+}
+
+.project-short-info
+{
+   margin: 5%;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+}
+
+.borded
+{
+   background-color: white;  
+   border: 2px solid #1E88E5;
+}
+
+@keyframes slide-from-top
+{
+   from {margin-top: -100%;}
+   to {margin-top: 0%;}
 }
