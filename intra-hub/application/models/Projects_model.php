@@ -20,26 +20,21 @@ class Projects_model extends CI_Model
 
 	public function projects_by_status($state)
 	{
-		$query = $this->db->get_where('t_projects', array('id_status' =>  $state, 'deleted' => NULL));
+		$res = $this->db->where(array('id_status' =>  $state, 'deleted' => NULL))
+		       	 	->or_where(array('id_status' =>  $state, 'deleted' => false))
+		       	 	->get('t_projects')
+				->result_array();
 
-		$result = array();
-
-		foreach ($query->result() as $row)
-			$result[] = $row;
-
-		return $result;
+		return $res;
 	}
 
 	public function projects_by_id($projects_id)
 	{
-		$query = $this->db->get_where('t_projects', array('id' => $projects_id));
+		$res = $this->db->where(array('id' => $projects_id))
+		       	 	->get('t_projects')
+				->result_array();
 
-		$result = array();
-
-		foreach ($query->result() as $row)
-			$result[] = $row;
-
-		return $result;
+		return $res;
 	}
 
 	public function add_project($data)

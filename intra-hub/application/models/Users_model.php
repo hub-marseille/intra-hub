@@ -15,14 +15,11 @@ class Users_model extends CI_Model
 		      'password' => $password
 		      );
 
-		$query = $this->db->get_where('t_users', $data);
+		$res = $this->db->where($data)
+				->get('t_users')
+				->result_array();
 
-		$result = array();
-
-		foreach ($query->result_array() as $row)
-			$result[] = $row;
-
-		return $result;
+		return $res;
 	}
 }
 

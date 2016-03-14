@@ -6,7 +6,8 @@ VAGRANTFILE_API_VERSION = '2'
 @script = <<SCRIPT
 DOCUMENT_ROOT="/var/www/intra-hub/intra-hub/"
 apt-get update
-apt-get install -y apache2 git curl php5-cli php5 php5-intl libapache2-mod-php5
+apt-get -y install vim curl build-essential python-software-properties
+apt-get install -y php5 apache2 libapache2-mod-php5 php5-curl php5-gd php5-mcrypt php5-mysql php-apc
 echo "
 <VirtualHost *:80>
         ServerAdmin webmaster@localhost
@@ -27,9 +28,16 @@ echo "
         </Directory>
         ErrorLog ${APACHE_LOG_DIR}/error.log
         CustomLog ${APACHE_LOG_DIR}/access.log combined
-</VirtualHost>
-" > /etc/apache2/sites-available/intra-hub.conf
+</VirtualHost>" > /etc/apache2/sites-available/intra-hub.conf
+echo "<VirtualHost *:81>
+    ServerAdmin webmaster@localhost
+    DocumentRoot /usr/share/phpmyadmin
+    DirectoryIndex index.php
+    ErrorLog ${APACHE_LOG_DIR}/phpmyadmin-error.log
+    CustomLog ${APACHE_LOG_DIR}/phpmyadmin-access.log combined
+</VirtualHost>" > /etc/apache2/sites-available/phpmyadmin.conf
 a2enmod rewrite
+a2enconf phpmyadmin
 a2dissite 000-default.conf
 a2ensite intra-hub.conf
 service apache2 restart
@@ -37,12 +45,12 @@ cd /var/www/intra-hub/intra-hub
 curl -Ss https://getcomposer.org/installer | php
 php composer.phar install --no-progress
 echo "** Visit http://localhost:8085 in your browser for to view the application **"
-apt-get install emacs
 SCRIPT
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = 'bento/ubuntu-14.04'
   config.vm.network "forwarded_port", guest: 80, host: 8085
+  config.vm.network "forwarded_port", guest: 81, host: 8086
   config.vm.hostname = "intra-hub.localhost"
   config.vm.synced_folder '.', '/var/www/intra-hub/intra-hub'
   config.vm.provision 'shell', inline: @script
