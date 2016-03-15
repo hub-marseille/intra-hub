@@ -22,6 +22,7 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('front-office/header.html');
 		$this->load->view('front-office/index.html');
+		// $this->load->view('front-office/accueil.html');
 		$this->load->view('front-office/footer.html');
 	}
 }

@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
-  <body ng-controller="intraCtrl">
+  <body ng-controller="projectCtrl">
      <div class="container blue darken-1 row">
         <div class="col s12 m4 12" ng-repeat="project in projects">
            <div class="row">
@@ -18,7 +18,7 @@
                 <div class="card-content">
                    <span class="card-title activator grey-text text-darken-4">{{project.name}}<i class="material-icons right">more_vert</i></span>
                 </div>
-                   <p>{{project.short_description}}</p>
+                   <p class="truncate">{{project.short_description}}</p>
                    <p class="clickable" ng-click="setCurrent(project)"><a>Voir plus</a></p>
                 <div class="card-reveal">
                    <span class="card-title grey-text text-darken-4">{{project.name}}<i class="material-icons right">close</i></span>
@@ -56,6 +56,6 @@
     <script type="text/javascript" src="assets/js/libraries/materialize.min.js"></script>
     <script type="text/javascript" src="assets/js/libraries/angular.min.js"></script>
     <!-- ctrl & directives angular -->
-    <script type="text/javascript" src="assets/js/intraCtrl.js"></script>
+    <script type="text/javascript" src="assets/js/intraApp.js"></script>
   </body>
 </html>
