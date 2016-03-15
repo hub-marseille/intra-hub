@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Lun 14 Mars 2016 à 13:30
+-- Généré le :  Lun 14 Mars 2016 à 13:56
 -- Version du serveur :  5.5.47-0+deb8u1
 -- Version de PHP :  5.6.17-0+deb8u1
 
@@ -36,14 +36,15 @@ CREATE TABLE IF NOT EXISTS `t_projects` (
   `id_owner` int(11) NOT NULL,
   `deleted` tinyint(1) NOT NULL,
   `creation_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `t_projects`
 --
 
 INSERT INTO `t_projects` (`id`, `name`, `main_picture`, `description`, `short_description`, `id_status`, `id_owner`, `deleted`, `creation_date`) VALUES
-(1, 'An Art Odyssey', 'an_art_odyssey.png', '1.	L’EVENEMENT\r\nL’exposition Star Wars l An Art Odyssey est l’évènement de cette fin d’année 2015 dans la Cité Phocéenne. En partenariat avec LucasFilm, ACME Archives, le Poster Posse et la Ville de Marseille, le Café Pixel va proposer une cinquantaine d’illustrations totalement originales lors d’une exposition vente exceptionnelle. A cette occasion, Fitch signe, en partenariat avec l’école Epitech à Marseille, une application en réalité virtuelle totalement inédite !\r\n\r\n2.	LE PROJET \r\nTim, Marvin et Fabien, 3 étudiants de l’école ont travaillé en étroite collaboration avec Fitch pour concevoir une application « interstellaire! » utilisant la technologie Card Board développé par GOOGLE. Passionnés par l’univers de la Saga Star Wars, ces étudiants ont été séduits par l’idée de développer sur une technologie immersive.\r\n\r\n3.	LE COTE INNOVANT\r\nLes étudiants d’Epitech sont reconnus pour leurs compétences techniques et leur capacité à s’adapter aux dernières évolutions technologiques. Pour l’exposition, Ils ont développé leur application à partir d’une technologie disponible depuis moins d’un an. Suite à la réalisation d’un prototype, les étudiants et les designers ont travaillé sur des données comportant le moins de polygones possibles afin d’optimiser les performances, rendant l’expérience aussi fluide que possible. Tenus à rendre l’application disponible pour le début de l’exposition, les étudiants ont pu développer un projet ambitieux avec un niveau d’exigence professionnel. T\r\n', 'Application Immersive - Univers Star Wars.\r\nCette application en réalité virtuelle nous transporte pour un voyage vers de lointaines galaxies. En l’utilisant, les étoiles s’alignent pour créer des personnages inter-galactiques', 2, 0, 0, '2016-03-14 18:08:40');
+(1, 'An Art Odyssey', 'an_art_odyssey.png', '1.	L’EVENEMENT\r\nL’exposition Star Wars l An Art Odyssey est l’évènement de cette fin d’année 2015 dans la Cité Phocéenne. En partenariat avec LucasFilm, ACME Archives, le Poster Posse et la Ville de Marseille, le Café Pixel va proposer une cinquantaine d’illustrations totalement originales lors d’une exposition vente exceptionnelle. A cette occasion, Fitch signe, en partenariat avec l’école Epitech à Marseille, une application en réalité virtuelle totalement inédite !\r\n\r\n2.	LE PROJET \r\nTim, Marvin et Fabien, 3 étudiants de l’école ont travaillé en étroite collaboration avec Fitch pour concevoir une application « interstellaire! » utilisant la technologie Card Board développé par GOOGLE. Passionnés par l’univers de la Saga Star Wars, ces étudiants ont été séduits par l’idée de développer sur une technologie immersive.\r\n\r\n3.	LE COTE INNOVANT\r\nLes étudiants d’Epitech sont reconnus pour leurs compétences techniques et leur capacité à s’adapter aux dernières évolutions technologiques. Pour l’exposition, Ils ont développé leur application à partir d’une technologie disponible depuis moins d’un an. Suite à la réalisation d’un prototype, les étudiants et les designers ont travaillé sur des données comportant le moins de polygones possibles afin d’optimiser les performances, rendant l’expérience aussi fluide que possible. Tenus à rendre l’application disponible pour le début de l’exposition, les étudiants ont pu développer un projet ambitieux avec un niveau d’exigence professionnel. T\r\n', 'Application Immersive - Univers Star Wars.\r\nCette application en réalité virtuelle nous transporte pour un voyage vers de lointaines galaxies. En l’utilisant, les étoiles s’alignent pour créer des personnages inter-galactiques', 2, 0, 0, '2016-03-14 18:08:40'),
+(2, 'ELEPhant-Migration', 'elephant.png', '1. EN REPONSE A UNE PROBLEMATIQUE\r\nAujourd’hui, les coûts logiciels et de maintenance liés aux bases de données sont de plus en plus élevés pour les entreprises notamment avec les solutions que proposent Oracle ou Microsoft.\r\n\r\n2. L’OFFRE DU PROJET\r\nPour réduite ses coûts, Elephant-Migration propose aux entreprises qui disposent d’une base de données Oracle ou SQL Server de migrer vers une base PostgreSQL (qui est une solution gratuite).\r\n\r\n\r\n3. LE COTE INNOVANT\r\nNotre projet propose plus qu’une simple copie de données à nos utilisateurs . Il permet notamment de transférer les profils de configuration, les utilisateurs, les triggers, les procédures stockées ainsi que les scripts personnels tout en gardant la même arborescence présente sur la base initiale. \r\n4. ORGANISATION\r\nCe projet s’inscrit dans l’Epitech Innovative Project (EIP) qui a pour vocation de créer un produit commercialisable à la fin de deux années de développement (notamment de la 3e à la 5e année du cursus d’EPITECH).\r\nNotre groupe est composé de six étudiants de 3e année appartenant au campus d’Epitech Marseille, d’Epitech Lyon et d’Epitech Nice.  ', 'Migration de base de donnees', 2, 0, 0, '2016-03-14 18:54:54');
 
 -- --------------------------------------------------------
 
@@ -101,7 +102,7 @@ ALTER TABLE `t_users`
 -- AUTO_INCREMENT pour la table `t_projects`
 --
 ALTER TABLE `t_projects`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `t_status`
 --
