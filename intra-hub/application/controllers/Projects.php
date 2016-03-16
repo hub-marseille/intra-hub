@@ -31,8 +31,8 @@ class Projects extends CI_Controller
 		$result = $this->projects_model->projects_by_status($state_id);
 
 		echo '{
-		     success: true,
-		     projects: '.json_encode($result).'
+		     "success": true,
+		     "projects": '.json_encode($result).'
 		}';
 	}
 
@@ -42,8 +42,18 @@ class Projects extends CI_Controller
 		$result = $this->projects_model->projects_by_id($projects_id);
 
 		echo '{
-		     success: true,
-		     project: '.json_encode($result).'
+		     "success": true,
+		     "project": '.json_encode($result).'
+		}';
+	}
+
+	public function important_projects()
+	{
+		$result = $this->projects_model->important_projects();
+
+		echo '{
+		     "success": true,
+		     "projects": '.json_encode($result).'
 		}';
 	}
 
@@ -66,8 +76,8 @@ class Projects extends CI_Controller
 			$this->projects_model->add_project($data);
 
 			echo '{
-			     success: true,
-		      	     errormsg: "OK"
+			     "success": true,
+		      	     "errormsg": "OK"
 			}';
 
 		} else {
@@ -88,8 +98,8 @@ class Projects extends CI_Controller
 			$this->projects_model->delete_project($id);
 
 			echo '{
-			     success: true,
-		      	     errormsg: "OK"
+			     "success": true,
+		      	     "errormsg": "OK"
 			}';
 
 		} else {
@@ -126,8 +136,8 @@ class Projects extends CI_Controller
 
 			if (count($data) == 0)
 			   die('{
-			   	success: true,
-				errormsg: "OK"
+			   	"success": true,
+				"errormsg": "OK"
 			   }');
 
 			$id = $this->input->post('id');
@@ -135,8 +145,8 @@ class Projects extends CI_Controller
 			$this->projects_model->update_project($data, $id);
 
 			echo '{
-			     success: true,
-		      	     errormsg: "OK"
+			     "success": true,
+		      	     "errormsg": "OK"
 			}';
 
 		} else {
