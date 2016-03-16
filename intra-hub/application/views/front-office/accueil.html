@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="intraApp">
+  <head>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/style.css"  media="screen,projection"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+  <body ng-controller="accCtrl">
+     <div class="container row">
+        <div class="blue draken-4">
+           <div class="center-align white-text z-depth-2">
+             <h1 class="roboto title">{HUB Marseille}</h1>
+           </div>
+        </div>
+        <div class="indigo draken-4 z-depth-2">
+          <ul class="valign-wrapper">
+             <li><h3 class="white-text valign right-shifted roboto">&bull;<span class="little-right-shifted">Le HUB c'est quoi ?</span></h3></li>
+         </ul>
+        <iframe width="100%" height="500" src="https://www.youtube.com/embed/DWRNq350mUE" frameborder="0" allowfullscreen></iframe>
+     </div>
+     <div class="indigo draken-4 z-depth-2">
+        <ul class="valign-wrapper">
+           <li><h3 class="white-text valign right-shifted roboto">&bull;<span class="little-right-shifted">Projets a l'honneur</span></h3></li>
+        </ul>
+        <div class="important-project-container">
+           <div class="important-project" ng-repeat="project in importantProjects">
+             <div>
+                <div class="card shadow-on-hover">
+                   <div class="card-image waves-effect waves-block waves-light">
+                      <img class="activator" ng-src="{{'assets/images/projets/' + project.main_picture}}">
+                   </div>
+                   <div class="card-content">
+                      <span class="card-title activator grey-text text-darken-4">{{project.name}}<i class="material-icons right">more_vert</i></span>
+                   </div>
+                      <p class="truncate">{{project.short_description}}</p>
+                      <p class="clickable" ng-click="setCurrent(project)"><a>Voir plus</a></p>
+                   <div class="card-reveal">
+                      <span class="card-title grey-text text-darken-4">{{project.name}}<i class="material-icons right">close</i></span>
+                      <p>{{project.description}}</p>
+                   </div>
+                </div>
+             </div>
+           </div>
+        </div>
+     </div>
+     </div>
+    <!-- libs -->
+    <script type="text/javascript" src="assets/js/libraries/jquery-2.2.1.min.js"></script>
+    <script type="text/javascript" src="assets/js/libraries/materialize.min.js"></script>
+    <script type="text/javascript" src="assets/js/libraries/angular.min.js"></script>
+    <!-- ctrl & directives angular -->
+    <script type="text/javascript" src="assets/js/intraApp.js"></script>
+  </body>
+</html>
