@@ -37,6 +37,14 @@ class Projects_model extends CI_Model
 		return $res;
 	}
 
+	public function important_projects()
+	{
+		$res = $this->db->where(array('important' => true))
+		       		->get('t_projects')
+				->result_array();
+		return $res;
+	}
+
 	public function add_project($data)
 	{
 		try {
