@@ -25,23 +25,26 @@ class backOfficeHome extends CI_Controller {
             $response = "failed";
         if (($pwd = $this->input->post('pwd')) == false)
             $response = "failed";
-        $this->load->model('EpitechLogin_model', 'Login');
-        $ret = $this->Login->authenticate($login, $pwd);
-
-        $response = $login . ', ' . $pwd . ": You're not logged!";
-
-        if ($ret == true)
+        if  ($login != null && $pwd != null)
         {
-            $response = "Logged In!";
-            $this->index();
+            $this->load->model('EpitechLogin_model', 'Login');
+            $ret = $this->Login->authenticate($login, $pwd);
+            $response = $login . ', ' . $pwd . ": You're not logged!";
+
+            /* if ($ret == true)
+             {
+                 $response = "Logged In!";
+                 $this->index();
+             }
+             else
+             {*/
+            $response .= " ErrorCode : " . $ret . ' - ';
+
         }
-        else
-        {
-            $response .= " ErrorCode : " . $ret;
             $data = array();
             $data["Status"] = $response;
             $this->loginIndex($data);
-        }
-        return json_encode($response);
+        //}
+       // return json_encode($response);
     }
 }

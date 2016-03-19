@@ -21,6 +21,17 @@ class Users_model extends CI_Model
 
 		return $res;
 	}
+
+	public function createUser($login, $password)
+	{
+		$data = array(
+			'username' => $login,
+			'password' => $password,
+			'user_right' => 1
+		);
+		$this->db->insert('t_users', $data);
+
+	}
 }
 
 ?>
