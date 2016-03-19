@@ -10,7 +10,13 @@
 </head>
 <body>
 <div id="loginDiv">
-<h1> Logged In </h1>
+<h1> Login </h1>
+    <form action="backofficehome/authenticate" method="POST" novalidate>
+        <input id="login" placeholder="epitech's login" type="text">
+        <input id="pwd" placeholder="Unix password" type="password">
+        <input id="loginButton" class="waves-effect waves-light btn-large" type="submit">
+        <p id="loginConfirm"></p>
+    </form>
 </div>
 
 
