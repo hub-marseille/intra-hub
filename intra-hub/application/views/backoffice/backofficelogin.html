@@ -11,11 +11,11 @@
 <body>
 <div id="loginDiv">
 <h1> Login </h1>
-    <form action="authenticate" method="POST" novalidate>
-        <input id="login" placeholder="epitech's login" type="text">
-        <input id="pwd" placeholder="Unix password" type="password">
+    <form action="authenticate" method="POST">
+        <input id="login" name="login" placeholder="epitech's login" type="text">
+        <input id="pwd" name="pwd" placeholder="Unix password" type="password">
         <input id="loginButton" class="waves-effect waves-light btn-large" type="submit">
-        <p id="loginConfirm"></p>
+        <p id="loginConfirm"><?php echo $Status ?></p>
     </form>
 </div>
 

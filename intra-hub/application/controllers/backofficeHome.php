@@ -9,11 +9,10 @@
 
 class backOfficeHome extends CI_Controller {
 
-    public function loginIndex()
+    public function loginIndex($data)
     {
-        $ret = $this->load->view('backoffice/backofficelogin.html');
+        $ret = $this->load->view('backoffice/backofficelogin.html', $data);
         // return json_encode($ret);
-
     }
     public function index()
     {
@@ -29,7 +28,7 @@ class backOfficeHome extends CI_Controller {
         $this->load->model('EpitechLogin_model', 'Login');
         $ret = $this->Login->authenticate($login, $pwd);
 
-        $response = "You're not logged!";
+        $response = $login . ', ' . $pwd . ": You're not logged!";
 
         if ($ret == true)
         {
@@ -38,7 +37,10 @@ class backOfficeHome extends CI_Controller {
         }
         else
         {
-            //$this->loginIndex();
+            $response .= " ErrorCode : " . $ret;
+            $data = array();
+            $data["Status"] = $response;
+            $this->loginIndex($data);
         }
         return json_encode($response);
     }

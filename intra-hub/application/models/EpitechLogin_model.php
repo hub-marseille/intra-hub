@@ -10,8 +10,6 @@ class EpitechLogin_model extends CI_Model
 {
     public function authenticateWithCredentials($login, $password)
     {
-        //$login="pomare_b";
-        //$password="eltpiIol";
         $options = array(
             "https://intra.epitech.eu/&format=json",
             CURLOPT_RETURNTRANSFER => true
@@ -29,7 +27,6 @@ class EpitechLogin_model extends CI_Model
 
         $ret = curl_exec($ch);
         curl_close($ch);
-
         if ($ret == 200) {
             return true;
         }
@@ -37,8 +34,10 @@ class EpitechLogin_model extends CI_Model
     }
     public function authenticate($login, $password)
     {
+       // $ret = $this->authenticateWithCredentials($login, $password);
         $ret = false;
-        if ($this->authenticateWithCredentials($login, $password)) {
+        if ($this->authenticateWithCredentials($login, $password) == true)
+        {
             $ret = true;
         }
         return $ret;
