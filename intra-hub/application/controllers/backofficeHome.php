@@ -38,7 +38,7 @@ class backOfficeHome extends CI_Controller {
         }
         else
         {
-            $this->loginIndex();
+            //$this->loginIndex();
         }
         return json_encode($response);
     }
