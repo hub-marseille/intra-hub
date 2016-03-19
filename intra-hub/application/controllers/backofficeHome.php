@@ -11,41 +11,34 @@ class backOfficeHome extends CI_Controller {
 
     public function loginIndex($data)
     {
-        $ret = $this->load->view('backoffice/backofficelogin.html', $data);
-        // return json_encode($ret);
+        $this->load->view('backoffice/backofficelogin.html', $data);
     }
     public function index()
     {
-        $ret = $this->load->view('backoffice/backofficehome.html');
+        $this->load->view('backoffice/backofficehome.html');
     }
 
     public function authenticate()
     {
-        if (($login = $this->input->post('login')) == false);
-            $response = "failed";
-        if (($pwd = $this->input->post('pwd')) == false)
-            $response = "failed";
+        $response = '';
+        if (($login = $this->input->post('login')) == false || (($pwd = $this->input->post('pwd')) == false))
+            $response .= "Credentials incomplete";
         if  ($login != null && $pwd != null)
         {
             $this->load->model('EpitechLogin_model', 'Login');
             $ret = $this->Login->authenticate($login, $pwd);
-            $response = $login . ', ' . $pwd . ": You're not logged!";
-
-            /* if ($ret == true)
+            if ($ret["status"] == true)
              {
-                 $response = "Logged In!";
                  $this->index();
              }
-             else
-             {*/
-            $response .= " ErrorCode : " . $ret . ' - ';
-
+            else
+            {
+                $response = "Login failed: " . $ret["msg"];
+            }
         }
-            $data = array();
-            $data["Status"] = $response;
-            $this->loginIndex($data);
-        //}
-       // return json_encode($response);
+        $data = array();
+        $data["Status"] = $response;
+        $this->loginIndex($data);
     }
 
     public function add_project()

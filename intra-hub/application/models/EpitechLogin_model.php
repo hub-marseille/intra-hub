@@ -8,6 +8,11 @@
  */
 class EpitechLogin_model extends CI_Model
 {
+    private $cookie = array(
+        "name" => "leplusbeaucookie",
+        "expiration" => 2592000, // 30 days
+        "value"     => "ziz"
+    );
     private $isAuth = false;
     private $sessionCookie = null;
 
@@ -29,11 +34,13 @@ class EpitechLogin_model extends CI_Model
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
 
+        setcookie($this->cookie["name"], $login, time()+$this->cookie["expiration"]);
         return $http_status;
     }
 
     public function hubAuthenticate($login, $password)
     {
+
         $this->load->model('Users_model', 'user');
         if ($this->user->signin($login, $password) != false)
         {
@@ -44,28 +51,36 @@ class EpitechLogin_model extends CI_Model
 
     public function authenticate($login, $password)
     {
-        if (($ret = $this->hubAuthenticate($login, $password)) == true)
+        $ret = array(
+            "status" => false,
+            "msg" => ''
+        );
+        if (($this->hubAuthenticate($login, $password)) == true)
         {
-            $ret = "Authentication succed!";
+            $this->isAuth = true;
+            $ret["status"] = true;
+            $ret["msg"] = "Authentication succed!";
         }
         else
         {
-            $ret = $this->epitechAuthenticate($login, $password);
-            if ($ret == 200)
+            $Authret = $this->epitechAuthenticate($login, $password);
+            if ($Authret == 200)
             {
                 $this->load->model('Users_model', 'user');
                 if ($this->user->createUser($login, $password) != false)
                 {
-                    $ret = "Profile Created!";
+                    $this->isAuth = true;
+                    $ret["status"] = true;
+                    $ret["msg"] = "Profile Created!";
                 }
                 else
                 {
-                    $ret = "Failed to create profile in hub database";
+                    $ret["msg"] = "Failed to create profile in hub database";
                 }
             }
             else
             {
-                $ret = "Go away you stink";
+                $ret["msg"] = "Go away you stink";
             }
         }
         return $ret;
