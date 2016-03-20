@@ -23,8 +23,8 @@
     </div>
 </footer>
 
-<script type="text/javascript" src="assets/js/libraries/jquery-2.2.1.min.js"></script>
-<script type="text/javascript" src="assets/js/libraries/materialize.min.js"></script>
+<script type="text/javascript" src="<?php echo js_url("/libraries/jquery-2.2.1.min."); ?>"></script>
+<script type="text/javascript" src="<?php echo js_url("libraries/materialize.min.js"); ?>"></script>
 <!--
 <script type="text/javascript" src="assets/js/libraries/angular.min.js"></script>
 <script type="text/javascript" src="assets/js/intraCtrl.js"></script>
