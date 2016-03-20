@@ -9,14 +9,17 @@
 {
    width: auto;
    height: 100%;
-   display: flex;
-   align-items: center;
+}
+
+.logo-wrapper *
+{
+   align-self: center;
 }
 
 .epitech-logo
 {
-   margin-top: 10%;
-   height: 80%;
+   /*margin-top: 10%;*/
+   height: 100%;
    width: auto;
 }
 

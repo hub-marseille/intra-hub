@@ -1,19 +1,12 @@
 <!DOCTYPE html>
 <html ng-app="intraApp">
-  <head>
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css"  media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="assets/css/style.css"  media="screen,projection"/>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  </head>
   <body ng-controller="projectCtrl">
      <div class="container blue darken-1 row">
         <div class="col s12 m4 12" ng-repeat="project in projects">
            <div class="row">
              <div class="card shadow-on-hover">
                 <div class="card-image waves-effect waves-block waves-light">
-                   <img class="activator" ng-src="{{'assets/images/projets/' + project.main_picture}}">
+                   <img class="activator" ng-src="{{'/intra-hub/assets/images/projets/' + project.main_picture}}">
                 </div>
                 <div class="card-content">
                    <span class="card-title activator grey-text text-darken-4">{{project.name}}<i class="material-icons right">more_vert</i></span>
@@ -35,7 +28,7 @@
             </div>
             <div class="short-info">
                <div class="project-slider">
-                  <img class="project-img" ng-src="{{'assets/images/projets/' + current.main_picture}}"/>
+                  <img class="project-img" ng-src="{{'/intra-hub/assets/images/projets/' + current.main_picture}}"/>
                </div>
                <div class="project-short-info">
                   <div class="flow-text">Nom du projet: {{current.name}}</div>
@@ -52,10 +45,10 @@
          </div>
       </div>
     <!-- libs -->
-    <script type="text/javascript" src="assets/js/libraries/jquery-2.2.1.min.js"></script>
-    <script type="text/javascript" src="assets/js/libraries/materialize.min.js"></script>
-    <script type="text/javascript" src="assets/js/libraries/angular.min.js"></script>
+    <script type="text/javascript" src="/intra-hub/assets/js/libraries/jquery-2.2.1.min.js"></script>
+    <script type="text/javascript" src="/intra-hub/assets/js/libraries/materialize.min.js"></script>
+    <script type="text/javascript" src="/intra-hub/assets/js/libraries/angular.min.js"></script>
     <!-- ctrl & directives angular -->
-    <script type="text/javascript" src="assets/js/intraApp.js"></script>
+    <script type="text/javascript" src="/intra-hub/assets/js/intraApp.js"></script>
   </body>
 </html>

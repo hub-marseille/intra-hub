@@ -25,7 +25,7 @@ app.controller("projectCtrl", function($scope)
          }
       }
    }
-   request.open("GET", "index.php/projects/all_projects", true);
+   request.open("GET", "/intra-hub/index.php/projects/all_projects", true);
    request.send();
 });
 
@@ -35,7 +35,7 @@ app.controller("accCtrl", function($scope)
 
    var request;
 
-   // A REMPLACER PAR AUTRE REQUETE 
+   // A REMPLACER PAR AUTRE REQUETE
    request = new XMLHttpRequest();
    request.onload = function()
    {
@@ -51,6 +51,6 @@ app.controller("accCtrl", function($scope)
          }
       }
    }
-   request.open("GET", "index.php/projects/all_projects", true);
+   request.open("GET", "/intra-hub/index.php/projects/important_projects", true);
    request.send();
 });
