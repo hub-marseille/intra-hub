@@ -1,51 +1,16 @@
 <?php
-
 /**
  * Created by PhpStorm.
- * User: Benjamin
- * Date: 12/03/2016
- * Time: 17:09
+ * User: otto
+ * Date: 3/19/2016
+ * Time: 6:22 PM
  */
 
-class backOfficeHome extends CI_Controller {
-
-    public function __construct()
-    {
-        parent::__construct();
-        $this->load->model('EpitechLogin_model', 'Login');
-        $this->load->library('session');
-    }
-
-    public function loginIndex($data)
-    {
-        $this->load->view('templates/backoffice/header', $data);
-        $this->load->view('backoffice/backofficelogin', $data);
-        $this->load->view('templates/backoffice/footer', $data);
-    }
+class Project extends CI_Controller
+{
     public function index()
     {
-        $this->load->view('templates/backoffice/header');
-        $this->load->view('backoffice/backofficehome.html');
-        $this->load->view('templates/backoffice/footer');
-    }
-
-    public function authenticate()
-    {
-        $response = '';
-        $login = $this->input->post('login');
-        $pwd = $this->input->post('pwd');
-        $ret = $this->Login->authenticate($login, $pwd);
-        if ($ret["status"] == true)
-         {
-             $this->index();
-         }
-        else
-        {
-            $data = array();
-            $data["Status"] = $ret["msg"];
-            $data["title"] = "Login";
-            $this->loginIndex($data);
-        }
+        $this->load->view('backoffice/Project.html');
     }
 
     public function add_project()
@@ -75,8 +40,9 @@ class backOfficeHome extends CI_Controller {
                 $this->projects->add_project($data);
             }
             else {
-                //redirect
-                echo 'You must be logged in to do this';
+                $this->load->view('templates/backoffice/header', $data);
+                $this->load->view('backoffice/notloggedin.html');
+                $this->load->view('templates/backoffice/footer', $data);
             }
         }
     }
