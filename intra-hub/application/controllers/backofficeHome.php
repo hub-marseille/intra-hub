@@ -32,8 +32,8 @@ class backOfficeHome extends CI_Controller {
     public function authenticate()
     {
         $response = '';
-        if (($login = $this->input->post('login')) == false || (($pwd = $this->input->post('pwd')) == false))
-            $response .= "Credentials incomplete";
+        $login = $this->input->post('login');
+        $pwd = $this->input->post('pwd');
         $ret = $this->Login->authenticate($login, $pwd);
         if ($ret["status"] == true)
          {
@@ -41,9 +41,8 @@ class backOfficeHome extends CI_Controller {
          }
         else
         {
-            $response = "Login failed: " . $ret["msg"];
             $data = array();
-            $data["Status"] = $response;
+            $data["Status"] = $ret["msg"];
             $data["title"] = "Login";
             $this->loginIndex($data);
         }

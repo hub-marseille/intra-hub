@@ -85,7 +85,7 @@ class EpitechLogin_model extends CI_Model
             }
             else
             {
-                $ret["msg"] = "Go away you stink";
+                $ret["msg"] = "Not logged";
             }
         }
         return $ret;
