@@ -45,13 +45,21 @@ class Projects_model extends CI_Model
 		return $res;
 	}
 
-	public function add_project($data)
+	public function add_project()
 	{
-		try {
+		$data = array(
+			'name' => $this->input->post('name'),
+			'main_picture' => $this->input->post('main_picture'),
+			'description' => $this->input->post('description'),
+			'short_description' => $this->input->post('short_description'),
+			'id_status' => 1,
+			//'id_owner' => $this->session->userdata('id')
+			'id_owner' => 1
+		);
+		return $this->db->insert('t_projects', $data);
+		/*try {
 		    $this->db->insert('t_projects', $data);
-		} catch (Exception $e) {
-		
-		}
+		} catch (Exception $e) {*/
 	}
 
 	public function delete_project($id)

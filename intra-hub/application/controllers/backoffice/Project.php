@@ -8,42 +8,27 @@
 
 class Project extends CI_Controller
 {
-    public function index()
+    public function __construct()
     {
-        $this->load->view('backoffice/Project.html');
+        parent::__construct();
+        $this->load->model('Projects_model', 'projects');
     }
 
-    public function add_project()
+    public function index()
     {
-        $this->load->helper('form');
+        $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
-        //$current_user = $this->session->userdata('id');
-        $current_user = 1;
 
-        $this->form_validation->set_rules('name', 'Name', 'required');
-        $this->form_validation->set_rules('name', 'name', 'is_unique[t_projects.name]');
+        $this->form_validation->set_rules('name', 'Project name', 'required|is_unique[t_projects.name]');
 
-        if ($this->form_validation->run() === FALSE) {
-            echo "a unique name is required";
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('templates/backoffice/header');
+            $this->load->view('backoffice/Project');
+            $this->load->view('templates/backoffice/footer');
         }
         else {
-            if (is_numeric($current_user) && $current_user > 0) {
-                $data = array(
-                    'name' => $this->input->post('name'),
-                    'main_picture' => $this->input->post('main_picture'),
-                    'description' => $this->input->post('description'),
-                    'short_description' => $this->input->post('short_description'),
-                    'id_status' => 1,
-                    //'id_owner' => $this->input->post('current_user')
-                );
-                $this->load->model('Projects_model', 'projects');
-                $this->projects->add_project($data);
-            }
-            else {
-                $this->load->view('templates/backoffice/header', $data);
-                $this->load->view('backoffice/notloggedin.html');
-                $this->load->view('templates/backoffice/footer', $data);
-            }
+            $this->load->model('Projects_model', 'projects');
+            $this->projects->add_project();
         }
     }
 }

@@ -53,4 +53,5 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['login'] = 'backoffice/Home/authenticate';
-$route['addproject'] = 'backoffice/Project/add_project';
+$route['addproject'] = 'backoffice/Project';
+$route['backoffice'] = 'backoffice/home';
