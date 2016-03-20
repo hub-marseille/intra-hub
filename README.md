@@ -1,4 +1,4 @@
-#Server Setup :
+#Server Setup:
 
 ## Installer LAMP (linux/apache/mysql/php)
 	https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-debian-8
