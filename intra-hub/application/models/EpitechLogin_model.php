@@ -8,17 +8,37 @@
  */
 class EpitechLogin_model extends CI_Model
 {
-    private $cookie = array(
-        "name" => "leplusbeaucookie",
-        "expiration" => 2592000, // 30 days
-        "value"     => "ziz"
-    );
     private $isAuth = false;
     private $sessionCookie = null;
 
     public function __construct()
     {
         parent::__construct();
+    }
+
+
+    public function setCookie($login, $password, $authLvl)
+    {
+        $cookie = array(
+            'name' => 'leplusbeaucookie',
+            'login' => $login,
+            'password' => $password,
+            'authLvl' => $authLvl,
+            'logged' => true
+        );
+        $this->session->set_userdata($cookie);
+    }
+
+    public function validateOnCookie()
+    {
+        if (($this->sessionCookie = $this->session->all_userdata()) != null && isset($this->sessionCookie['login']) && isset($this->sessionCookie['password']))
+        {
+            if ($this->hubAuthenticate($this->sessionCookie['login'], $this->sessionCookie["password"]) == true)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public function epitechAuthenticate($login, $password)
@@ -39,7 +59,6 @@ class EpitechLogin_model extends CI_Model
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
 
-        setcookie($this->cookie["name"], $login, time()+$this->cookie["expiration"]);
         return $http_status;
     }
 
@@ -65,6 +84,7 @@ class EpitechLogin_model extends CI_Model
             $this->isAuth = true;
             $ret["status"] = true;
             $ret["msg"] = "Authentication succed!";
+            $this->setcookie($login, $password, 0);
         }
         else
         {
@@ -77,6 +97,7 @@ class EpitechLogin_model extends CI_Model
                     $this->isAuth = true;
                     $ret["status"] = true;
                     $ret["msg"] = "Profile Created!";
+                    $this->setcookie($login, $password, 1);
                 }
                 else
                 {

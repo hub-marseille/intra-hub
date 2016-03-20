@@ -24,27 +24,41 @@ class Home extends CI_Controller {
     }
     public function index()
     {
-        $this->load->view('templates/backoffice/header');
-        $this->load->view('backoffice/Home.html');
-        $this->load->view('templates/backoffice/footer');
+        if ($this->Login->validateOnCookie() == true)
+        {
+            $this->load->view('templates/backoffice/header');
+            $this->load->view('backoffice/Index');
+            $this->load->view('templates/backoffice/footer');
+        }
+        else
+        {
+            $this->authenticate();
+        }
     }
 
     public function authenticate()
     {
-        $response = '';
-        $login = $this->input->post('login');
-        $pwd = $this->input->post('pwd');
-        $ret = $this->Login->authenticate($login, $pwd);
-        if ($ret["status"] == true)
-         {
-             $this->index();
-         }
+       /* if (($session = $this->session->all_userdata()) == null || $session["logged"] != true)
+        {*/
+            $response = '';
+            $login = $this->input->post('login');
+            $pwd = $this->input->post('pwd');
+            $ret = $this->Login->authenticate($login, $pwd);
+            if ($ret["status"] == true)
+            {
+                $this->index();
+            }
+            else
+            {
+                $data = array();
+                $data["Status"] = $ret["msg"];
+                $data["title"] = "Login";
+                $this->loginIndex($data);
+            }
+       /* }
         else
         {
-            $data = array();
-            $data["Status"] = $ret["msg"];
-            $data["title"] = "Login";
-            $this->loginIndex($data);
-        }
+            $this->index();
+        }*/
     }
 }
