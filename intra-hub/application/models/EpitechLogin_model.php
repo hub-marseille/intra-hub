@@ -16,6 +16,11 @@ class EpitechLogin_model extends CI_Model
     private $isAuth = false;
     private $sessionCookie = null;
 
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
     public function epitechAuthenticate($login, $password)
     {
         $addr = "https://intra.epitech.eu/?format=json";

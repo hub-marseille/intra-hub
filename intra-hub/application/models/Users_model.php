@@ -29,8 +29,8 @@ class Users_model extends CI_Model
 			'password' => $password,
 			'user_right' => 1
 		);
-		$this->db->insert('t_users', $data);
-
+		$ret =$this->db->insert('t_users', $data);
+		return $ret;
 	}
 }
 

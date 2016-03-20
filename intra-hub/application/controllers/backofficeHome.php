@@ -9,13 +9,24 @@
 
 class backOfficeHome extends CI_Controller {
 
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('EpitechLogin_model', 'Login');
+        $this->load->library('session');
+    }
+
     public function loginIndex($data)
     {
-        $this->load->view('backoffice/backofficelogin.html', $data);
+        $this->load->view('templates/backoffice/header', $data);
+        $this->load->view('backoffice/backofficelogin', $data);
+        $this->load->view('templates/backoffice/footer', $data);
     }
     public function index()
     {
+        $this->load->view('templates/backoffice/header');
         $this->load->view('backoffice/backofficehome.html');
+        $this->load->view('templates/backoffice/footer');
     }
 
     public function authenticate()
@@ -23,22 +34,19 @@ class backOfficeHome extends CI_Controller {
         $response = '';
         if (($login = $this->input->post('login')) == false || (($pwd = $this->input->post('pwd')) == false))
             $response .= "Credentials incomplete";
-        if  ($login != null && $pwd != null)
+        $ret = $this->Login->authenticate($login, $pwd);
+        if ($ret["status"] == true)
+         {
+             $this->index();
+         }
+        else
         {
-            $this->load->model('EpitechLogin_model', 'Login');
-            $ret = $this->Login->authenticate($login, $pwd);
-            if ($ret["status"] == true)
-             {
-                 $this->index();
-             }
-            else
-            {
-                $response = "Login failed: " . $ret["msg"];
-            }
+            $response = "Login failed: " . $ret["msg"];
+            $data = array();
+            $data["Status"] = $response;
+            $data["title"] = "Login";
+            $this->loginIndex($data);
         }
-        $data = array();
-        $data["Status"] = $response;
-        $this->loginIndex($data);
     }
 
     public function add_project()

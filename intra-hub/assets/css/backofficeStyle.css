@@ -1,0 +1,31 @@
+.intraheader h1
+{
+    font-size: 24px;
+}
+
+.intraheader h2
+{
+    font-size: 18px;
+}
+
+.intraheader
+{
+    color: #FFFFFF;
+    background-color: #00b0ff;
+    text-align: center;
+}
+
+#loginConfirm
+{
+    text-align: center;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
