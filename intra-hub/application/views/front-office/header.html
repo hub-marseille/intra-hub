@@ -5,6 +5,13 @@
    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- libs -->
+    <script type="text/javascript" src="<?php echo js_url("libraries/jquery-2.2.1.min");?>"></script>
+    <script type="text/javascript" src="<?php echo js_url("libraries/materialize.min");?>"></script>
+    <script type="text/javascript" src="<?php echo js_url("libraries/angular.min");?>"></script>
+    <!-- ctrl & directives angular -->
+    <script type="text/javascript" src="<?php echo js_url("intraApp");?>"></script>
+    <script>var base_url = "<?php echo base_url();?>";</script>
 </head>
 <header>
   <div class="navbar-fixed">
@@ -16,7 +23,7 @@
           	</div>
           	<ul class="right hide-on-med-and-down">
              	<li><a href="<?php echo base_url();?>">Accueil</a></li>
-             	<li><a href="<?php echo base_url();?>projects">Projets</a></li>
+             	<li><a href="<?php echo base_url();?>projectsload">Projets</a></li>
              	<li><a href="<?php echo base_url();?>calendar">Calendrier</a></li>
              	<li><a href="<?php echo base_url();?>team">L'equipe</a></li>
           	</ul>
