@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <head>
+   <link type="text/css" rel="stylesheet" href="<?php echo css_url("materialize.min");?>"  media="screen,projection"/>
+   <link type="text/css" rel="stylesheet" href="<?php echo css_url("style");?>"  media="screen,projection"/>
    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   <link type="text/css" rel="stylesheet" href="/assets/css/materialize.min.css"  media="screen,projection"/>
-   <link type="text/css" rel="stylesheet" href="/assets/css/style.css"  media="screen,projection"/>
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
@@ -11,15 +11,15 @@
      <nav class="blue darken-4">
        <div class="nav-wrapper">
             <div class="logo-wrapper brand-logo">
-               <img class="material-icon epitech-logo" src="/assets/images/epitech.png"></img>
+               <img class="material-icon epitech-logo" src="<?php echo img_url("epitech.png");?>"></img>
                   <span>{HUB Marseille}</span>
-            </div>
-          <ul class="right hide-on-med-and-down">
-             <li><a href="/index.php/Home">Accueil</a></li>
-             <li><a href="/index.php/Projectsload">Projets</a></li>
-             <li><a href="/calendar.html">Calendrier</a></li>
-             <li><a href="/projets.html">L'equipe</a></li>
-          </ul>
+          	</div>
+          	<ul class="right hide-on-med-and-down">
+             	<li><a href="<?php echo base_url();?>">Accueil</a></li>
+             	<li><a href="<?php echo base_url();?>projects">Projets</a></li>
+             	<li><a href="<?php echo base_url();?>calendar">Calendrier</a></li>
+             	<li><a href="<?php echo base_url();?>team">L'equipe</a></li>
+          	</ul>
      </div>
   </nav>
 </div>

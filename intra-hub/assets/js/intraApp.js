@@ -25,7 +25,7 @@ app.controller("projectCtrl", function($scope)
          }
       }
    }
-   request.open("GET", "/intra-hub/index.php/projects/all_projects", true);
+   request.open("GET", base_url+"projects/all_projects", true);
    request.send();
 });
 
@@ -51,6 +51,6 @@ app.controller("accCtrl", function($scope)
          }
       }
    }
-   request.open("GET", "/intra-hub/index.php/projects/important_projects", true);
+   request.open("GET", base_url+"projects/important_projects", true);
    request.send();
 });
