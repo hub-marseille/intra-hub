@@ -7,14 +7,14 @@
     <link type="text/css" rel="stylesheet" href="<?php echo css_url("style"); ?>"  media="screen,projection"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta charset="UTF-8">
-    <title>Ziz</title>
+    <title>Hub Epitech Marseille - Backoffice</title>
 </head>
 <body>
     <nav>
         <div class="nav-wrapper light-blue darken-1">
             <a href="#" class="brand-logo">intraHub-Backoffice</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="">un truc</a></li>
+                <li><a href="/backoffice/projects">Projets</a></li>
                 <li><a href=""></a></li>
             </ul>
         </div>
