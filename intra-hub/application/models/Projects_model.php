@@ -72,14 +72,25 @@ class Projects_model extends CI_Model
 		}
 	}
 
-	public function update_project($data, $id)
+	public function update_project($id)
 	{
-		try {
+		$data = array(
+			'name' => $this->input->post('name'),
+			'main_picture' => $this->input->post('main_picture'),
+			'description' => $this->input->post('description'),
+			'short_description' => $this->input->post('short_description'),
+			'id_status' => 1,
+			//'id_owner' => $this->session->userdata('id')
+			'id_owner' => 1
+		);
+		$this->db->where('id', $id);
+		$this->db->update('t_projects', $data);
+		/*try {
 		    $this->db->where('id', $id);
 		    $this->db->update('t_projects', $data);
 		} catch (Exception $e) {
 		
-		}
+		}*/
 	}
 
 	public function next_status($id)
