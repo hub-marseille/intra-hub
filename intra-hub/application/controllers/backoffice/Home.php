@@ -24,7 +24,7 @@ class Home extends CI_Controller {
     }
     public function index()
     {
-        if ($this->Login->validateOnCookie() == true)
+        if (isset($this->session->all_userdata()["id"]))
         {
             $this->load->view('templates/backoffice/header');
             $this->load->view('backoffice/Index');
@@ -32,33 +32,19 @@ class Home extends CI_Controller {
         }
         else
         {
-            $this->authenticate();
+            $data = array();
+            $data["Status"] = '';
+            $data["title"] = "Login";
+            $this->loginIndex($data);
         }
     }
 
+
     public function authenticate()
     {
-       /* if (($session = $this->session->all_userdata()) == null || $session["logged"] != true)
-        {*/
-            $response = '';
-            $login = $this->input->post('login');
-            $pwd = $this->input->post('pwd');
-            $ret = $this->Login->authenticate($login, $pwd);
-            if ($ret["status"] == true)
-            {
-                $this->index();
-            }
-            else
-            {
-                $data = array();
-                $data["Status"] = $ret["msg"];
-                $data["title"] = "Login";
-                $this->loginIndex($data);
-            }
-       /* }
-        else
-        {
-            $this->index();
-        }*/
+        $login = $this->input->post('login');
+        $pwd = $this->input->post('pwd');
+        $ret = $this->Login->authenticate($login, $pwd);
+        return json_encode($ret["status"]);
     }
 }

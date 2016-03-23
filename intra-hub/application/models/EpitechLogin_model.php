@@ -17,13 +17,13 @@ class EpitechLogin_model extends CI_Model
     }
 
 
-    public function setCookie($login, $password, $authLvl)
+    public function setCookie($user)
     {
         $cookie = array(
-            'name' => 'leplusbeaucookie',
-            'login' => $login,
-            'password' => $password,
-            'authLvl' => $authLvl,
+            'id'   => $user['id'],
+            'name' => $user['username'],
+//            'login' => $user['login'],
+            //'authLvl' => $user[''],
             'logged' => true
         );
         $this->session->set_userdata($cookie);
@@ -31,12 +31,9 @@ class EpitechLogin_model extends CI_Model
 
     public function validateOnCookie()
     {
-        if (($this->sessionCookie = $this->session->all_userdata()) != null && isset($this->sessionCookie['login']) && isset($this->sessionCookie['password']))
+        if (($this->sessionCookie = $this->session->all_userdata()) != null && isset($this->sessionCookie['id']))
         {
-            if ($this->hubAuthenticate($this->sessionCookie['login'], $this->sessionCookie["password"]) == true)
-            {
-                return true;
-            }
+            return true;
         }
         return false;
     }
@@ -77,14 +74,14 @@ class EpitechLogin_model extends CI_Model
     {
         $ret = array(
             "status" => false,
-            "msg" => ''
+            "msg" => 'Failed Attempt'
         );
-        if (($this->hubAuthenticate($login, $password)) == true)
+        if (($user = $this->hubAuthenticate($login, $password)) == true)
         {
             $this->isAuth = true;
             $ret["status"] = true;
             $ret["msg"] = "Authentication succed!";
-            $this->setcookie($login, $password, 0);
+            $this->setcookie($user[0]);
         }
         else
         {
@@ -97,7 +94,8 @@ class EpitechLogin_model extends CI_Model
                     $this->isAuth = true;
                     $ret["status"] = true;
                     $ret["msg"] = "Profile Created!";
-                    $this->setcookie($login, $password, 1);
+                    if ($user = $this->hubAuthenticate($login, $password) == true);
+                        $this->setcookie($user);
                 }
                 else
                 {
@@ -106,9 +104,12 @@ class EpitechLogin_model extends CI_Model
             }
             else
             {
-                $ret["msg"] = "Not logged";
+                $ret["msg"] = "Failed attempt";
             }
         }
+        var_dump($ret);
+        var_dump($user[0]);
+        exit;
         return $ret;
     }
 }
