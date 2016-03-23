@@ -11,12 +11,6 @@
         <textarea name="short_description" placeholder="description"><?php echo $short_description; ?></textarea><br />
         <input class="waves-effect waves-light btn-large" type="submit" value="Submit"/>
         </form>
-        <a class="waves-effect waves-light btn-large" href="/backoffice/projects">Go back to projects</a>
+        <a class="waves-effect waves-light btn-large" href="<?php echo base_url()."backoffice/projects"?>">Go back to projects</a>
     </div>
-    <!-- libs -->
-    <script type="text/javascript" src="/assets/js/libraries/jquery-2.2.1.  js"></script>
-    <script type="text/javascript" src="/assets/js/libraries/materialize.js"></script>
-    <script type="text/javascript" src="/assets/js/libraries/angular.js"></script>
-    <!-- ctrl & directives angular -->
-    <script type="text/javascript" src="/assets/js/intraApp.js"></script>
 </main>

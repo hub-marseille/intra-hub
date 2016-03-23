@@ -14,7 +14,7 @@
         <div class="nav-wrapper light-blue darken-1">
             <a href="#" class="brand-logo">intraHub-Backoffice</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="/backoffice/projects">Projets</a></li>
+                <li><a href="<?php echo base_url()."backoffice/projects";?>">Projets</a></li>
                 <li><a href=""></a></li>
             </ul>
         </div>
