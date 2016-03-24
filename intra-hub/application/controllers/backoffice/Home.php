@@ -13,7 +13,6 @@ class Home extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('EpitechLogin_model', 'Login');
-        $this->load->library('session');
     }
 
     public function loginIndex($data)
@@ -24,7 +23,7 @@ class Home extends CI_Controller {
     }
     public function index()
     {
-        if (isset($this->session->all_userdata()["id"]))
+        if ($this->session->userdata('id') !== null)
         {
             $this->load->view('templates/backoffice/header');
             $this->load->view('backoffice/Index');
@@ -45,6 +44,10 @@ class Home extends CI_Controller {
         $login = $this->input->post('login');
         $pwd = $this->input->post('pwd');
         $ret = $this->Login->authenticate($login, $pwd);
-        return json_encode($ret["status"]);
+		if ($ret['status'])
+			echo "ok";
+		else
+			echo "ko";
+        //return json_encode($ret["status"]);
     }
 }
