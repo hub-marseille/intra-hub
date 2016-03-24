@@ -50,4 +50,10 @@ class Home extends CI_Controller {
 			echo "ko";
         //return json_encode($ret["status"]);
     }
+
+	public function signout()
+	{
+		$this->session->sess_destroy();
+		redirect(base_url()."backoffice");
+	}
 }

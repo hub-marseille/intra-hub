@@ -27,6 +27,7 @@ class EpitechLogin_model extends CI_Model
             'logged' => true
         );
         $this->session->set_userdata($cookie);
+//		var_dump($this->session->all_userdata());
     }
 
     public function validateOnCookie()
@@ -63,9 +64,10 @@ class EpitechLogin_model extends CI_Model
     {
 
         $this->load->model('Users_model', 'user');
-        if ($this->user->signin($login, $password) != false)
+		$user = $this->user->signin($login, $password);
+        if ($user != false)
         {
-            return true;
+            return $user;
         }
         return false;
     }
@@ -76,12 +78,12 @@ class EpitechLogin_model extends CI_Model
             "status" => false,
             "msg" => 'Failed Attempt'
         );
-        if (($user = $this->hubAuthenticate($login, $password)) == true)
+        if (($user = $this->hubAuthenticate($login, $password)) != false)
         {
             $this->isAuth = true;
             $ret["status"] = true;
             $ret["msg"] = "Authentication succed!";
-            $this->setcookie($user[0]);
+            $this->setCookie($user);
         }
         else
         {
@@ -94,8 +96,8 @@ class EpitechLogin_model extends CI_Model
                     $this->isAuth = true;
                     $ret["status"] = true;
                     $ret["msg"] = "Profile Created!";
-                    if ($user = $this->hubAuthenticate($login, $password) == true);
-                        $this->setcookie($user);
+                    if ($user = $this->hubAuthenticate($login, $password) != false);
+                        $this->setCookie($user);
                 }
                 else
                 {

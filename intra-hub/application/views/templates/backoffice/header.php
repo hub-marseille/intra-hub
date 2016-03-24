@@ -17,6 +17,8 @@
             <a href="#" class="brand-logo">intraHub-Backoffice</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="<?php echo base_url()."backoffice/projects";?>">Projets</a></li>
+                <?php if ($this->session->userdata('id') != null):?><li><a href="<?php echo base_url()."backoffice/home/signout";?>">Se déconnecter</a></li>
+				<?php endif;?>
                 <li><a href=""></a></li>
             </ul>
         </div>

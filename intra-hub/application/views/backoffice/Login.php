@@ -32,10 +32,13 @@
             data: {login: login, pwd: pwd}
         });
         formSubmit.done(function(data){
-            if (data == 'ok')
+            if (data == 'ok') {
                 $("#loginConfirm").html('Connexion réussie');
-			else if (data == 'ko')
+				window.location.href = base_url+"backoffice";
+			}
+			else if (data == 'ko') {
 				$("#loginConfirm").html('Oops nop.');
+			}
         })
     }
 
