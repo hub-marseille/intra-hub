@@ -25,17 +25,7 @@ class Users_model extends CI_Model
 		
 		$query = $this->db->get_where($this->table, $data);
 		$res = $query->row_array();
-
 		return $res;
-		//$res = $this->db->query("SELECT * FROM t_users WHERE username = " . array($data["username"] . " AND password = " . $data["password"]));
-		//$user = $res->row();
-		/*foreach ($res->result_array() as $row)
-		{
-			$user["username"] = $row['username'];
-			$user['id'] = $row['id'];
-			$user["password"] = $row['password'];
-		}*/
-		//return $user;
 	}
 
 	public function createUser($login, $password)

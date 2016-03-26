@@ -109,9 +109,6 @@ class EpitechLogin_model extends CI_Model
                 $ret["msg"] = "Failed attempt";
             }
         }
-        //var_dump($ret);
-        //var_dump($user[0]);
-        //exit;
         return $ret;
     }
 }
