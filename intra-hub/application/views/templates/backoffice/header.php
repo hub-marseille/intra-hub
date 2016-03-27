@@ -63,5 +63,8 @@
     <?php endif;?>
 
 <script type="text/javascript">
+ $(".singleArchive").on('click', function(event){
+    alert(event.target.id);
 
+ });
 </script>

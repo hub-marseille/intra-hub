@@ -29,7 +29,7 @@ class Home extends CI_Controller {
         $data['oldProj'] = '<ul>';
         foreach ($projects as $proj)
         {
-            $data['oldProj'] .= '<li id="' . $proj['id'] . '">' . $proj['name'] . '</li>';
+            $data['oldProj'] .= '<li class="singleArchive" id="' . $proj['id'] . '">' . $proj['name'] . '</li>';
         }
         $data['oldProj'] .= '</ul>';
 
