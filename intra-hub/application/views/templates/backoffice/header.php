@@ -31,7 +31,7 @@
             <li class="no-padding">
                 <ul class="collapsible collapsible-accordion">
                     <li>
-                        <a class="collapsible-header  waves-effect waves-blue active">Profil</a>
+                        <a id="profil" class="collapsible-header  waves-effect waves-blue active">Profil</a>
                         <div class="collapsible-body">
                             <ul>
                                 <li>page profil</li>
@@ -40,7 +40,7 @@
                         </div>
                     </li>
                     <li>
-                        <a class="collapsible-header  waves-effect waves-blue active">Mes Projets</a>
+                        <a id="projets" class="collapsible-header  waves-effect waves-blue">Mes Projets</a>
                         <div class="collapsible-body">
                             <ul>
                                 <li>A remplacer</li>
@@ -51,7 +51,7 @@
                         </div>
                     </li>
                     <li>
-                        <a class="collapsible-header  waves-effect waves-blue active">Projets Archivés</a>
+                        <a id="archives" class="collapsible-header  waves-effect waves-blue">Projets Archivés</a>
                         <div class="collapsible-body">
                             <?php echo $oldProj ?>
                         </div>
