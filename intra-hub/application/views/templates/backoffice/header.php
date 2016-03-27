@@ -23,3 +23,45 @@
             </ul>
         </div>
     </nav>
+    <?php if ($this->session->userdata('id') != null):?>
+    <div class="row">
+        <div id="leftCol" class="">
+            <img class="responsive-img" src="<?php echo base_url("assets/images/nopic.png"); ?>"></img>
+            <ul class="side-nav fixed" style="left: 0px;" data-collapsible="accordion">
+                <li id="logo"><h4>IntraHub</h4></li>
+                <li id="subtitle"><h5>Backoffice</h5></li>
+                <li id="profilePic"><img class="responsive-img" src="<?php echo base_url("assets/images/nopic.png"); ?>"></img></li>
+                <li class="no-padding">
+                    <ul class="collapsible collapsible-accordion">
+                        <li>
+                            <a class="collapsible-header  waves-effect waves-green active">Profil</a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li>page profil</li>
+                                    <li>mon ziz</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="collapsible-header  waves-effect waves-green active">Mes Projets</a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li>A remplacer</li>
+                                    <li>par un truc</li>
+                                    <li>en lien avec</li>
+                                    <li>la bdd</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="collapsible-header  waves-effect waves-green active">Projets Archivés</a>
+                            <div class="collapsible-body">
+                                <?php echo $oldProj ?>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <?php endif;?>

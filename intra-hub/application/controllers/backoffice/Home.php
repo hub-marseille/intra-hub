@@ -25,7 +25,6 @@ class Home extends CI_Controller {
 
     public function HomeIndex()
     {
-        $x = 0;
         $projects = $this->project->all_projects();
         $data['oldProj'] = '<ul>';
         foreach ($projects as $proj)
@@ -33,8 +32,9 @@ class Home extends CI_Controller {
             $data['oldProj'] .= '<li id="' . $proj['id'] . '">' . $proj['name'] . '</li>';
         }
         $data['oldProj'] .= '</ul>';
-        $this->load->view('templates/backoffice/header');
-        $this->load->view('backoffice/Index', $data);
+
+        $this->load->view('templates/backoffice/header', $data);
+        $this->load->view('backoffice/Index');
         $this->load->view('templates/backoffice/footer');
     }
 
