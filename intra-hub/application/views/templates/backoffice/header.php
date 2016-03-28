@@ -22,7 +22,7 @@
             </ul>
         </div>
     </nav>
-    <?php if ($this->session->userdata('id') != null):?>
+    <?php //if ($this->session->userdata('id') != null):?>
     <div class="row">
         <ul class="side-nav fixed" style="left: 0px;" data-collapsible="accordion">
             <li id="logo"><h4>IntraHub</h4></li>
@@ -60,11 +60,31 @@
             </li>
         </ul>
     </div>
-    <?php endif;?>
+    <?php //endif;?>
 
 <script type="text/javascript">
- $(".singleArchive").on('click', function(event){
-    alert(event.target.id);
 
- });
+    $(".singleArchive").on('click', function(event){
+        var queryProj = $.ajax({
+            type: "POST",
+            url: base_url+"backoffice/Project/viewproject",
+            data: {id: event.target.id}
+        });
+        queryProj.done(function(result){
+            var data = $.parseJSON(result);
+            document.getElementById('Center').innerHTML = "";
+            document.getElementById('Center').innerHTML +=
+                '<div class="row" id="name"><h2>'+data["name"]+'</h2></div>';
+            document.getElementById('Center').innerHTML +=
+                '<div class="row" id="main_picture"><img src="'+base_url+'assets/images/projets/'+data["main_picture"]+'"></div>';
+            document.getElementById('Center').innerHTML +=
+                '<div class="row" id="short_description">'+data["short_description"]+'</div>';
+            document.getElementById('Center').innerHTML +=
+                '<div class="row" id="description">'+data["description"]+'</div>';
+        });
+        queryProj.fail(function(data){
+          alert("cacaprout");
+        });
+    });
+
 </script>

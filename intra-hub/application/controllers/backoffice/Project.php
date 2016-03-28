@@ -78,4 +78,12 @@ class Project extends CI_Controller
         $this->projectManager->delete_project($id);
         redirect(base_url().'backoffice/projects');
     }
+
+    public function viewproject()
+    {
+        $id = $this->input->post("id");
+        $data = $this->projectManager->projects_by_id($id);
+        //$data["html_response"] = '<div class="row">' . $data[0]['description'] . '</div>';
+        echo json_encode($data[0]);
+    }
 }
