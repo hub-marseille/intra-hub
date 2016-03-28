@@ -83,7 +83,11 @@ class Project extends CI_Controller
     {
         $id = $this->input->post("id");
         $data = $this->projectManager->projects_by_id($id);
-        //$data["html_response"] = '<div class="row">' . $data[0]['description'] . '</div>';
-        echo json_encode($data[0]);
+        $data = $data[0];
+        $response = '<div class="row" id="name"><h2>'.$data["name"].'</h2></div>
+            <div class="row" id="main_picture"><img src='.base_url()."assets/images/projets/".$data["main_picture"].'></div>
+            <div class="row" id="short_description">'.$data["short_description"].'</div>
+            <div class="row" id="description">'.$data["description"].'</div>';
+        echo json_encode($response);
     }
 }

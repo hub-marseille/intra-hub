@@ -72,18 +72,7 @@
         });
         queryProj.done(function(result){
             var data = $.parseJSON(result);
-            document.getElementById('Center').innerHTML = "";
-            document.getElementById('Center').innerHTML +=
-                '<div class="row" id="name"><h2>'+data["name"]+'</h2></div>';
-            document.getElementById('Center').innerHTML +=
-                '<div class="row" id="main_picture"><img src="'+base_url+'assets/images/projets/'+data["main_picture"]+'"></div>';
-            document.getElementById('Center').innerHTML +=
-                '<div class="row" id="short_description">'+data["short_description"]+'</div>';
-            document.getElementById('Center').innerHTML +=
-                '<div class="row" id="description">'+data["description"]+'</div>';
-        });
-        queryProj.fail(function(data){
-          alert("cacaprout");
+            document.getElementById('Center').innerHTML = data;
         });
     });
 
