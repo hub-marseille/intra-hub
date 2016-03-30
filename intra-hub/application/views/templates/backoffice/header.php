@@ -22,7 +22,7 @@
             </ul>
         </div>
     </nav>
-    <?php //if ($this->session->userdata('id') != null):?>
+    <?php if ($this->session->userdata('id') != null):?>
     <div class="row">
         <ul class="side-nav fixed" style="left: 0px;" data-collapsible="accordion">
             <li id="logo"><h4>IntraHub</h4></li>
@@ -42,12 +42,7 @@
                     <li>
                         <a id="projets" class="collapsible-header  waves-effect waves-blue">Mes Projets</a>
                         <div class="collapsible-body">
-                            <ul>
-                                <li>A remplacer</li>
-                                <li>par un truc</li>
-                                <li>en lien avec</li>
-                                <li>la bdd</li>
-                            </ul>
+                           <?php echo $myProj ?>
                         </div>
                     </li>
                     <li>
@@ -60,7 +55,7 @@
             </li>
         </ul>
     </div>
-    <?php //endif;?>
+    <?php endif;?>
 
 <script type="text/javascript">
 
@@ -68,6 +63,18 @@
         var queryProj = $.ajax({
             type: "POST",
             url: base_url+"backoffice/Project/viewproject",
+            data: {id: event.target.id}
+        });
+        queryProj.done(function(result){
+            var data = $.parseJSON(result);
+            document.getElementById('Center').innerHTML = data;
+        });
+    });
+
+    $(".singleArchivePerso").on('click', function(event){
+        var queryProj = $.ajax({
+            type: "POST",
+            url: base_url+"backoffice/Project/viewprojectperso",
             data: {id: event.target.id}
         });
         queryProj.done(function(result){

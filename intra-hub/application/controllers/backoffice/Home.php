@@ -33,6 +33,14 @@ class Home extends CI_Controller {
         }
         $data['oldProj'] .= '</ul>';
 
+        $myprojects = $this->project->projects_by_user_id($this->session->userdata('id'));
+        $data['myProj'] = '<ul>';
+        foreach ($myprojects as $myproj)
+        {
+            $data['myProj'] .= '<li class="singleArchivePerso" id="' . $myproj['id'] . '">' . $myproj['name'] . '</li>';
+        }
+        $data['myProj'] .= '</ul>';
+
         $this->load->view('templates/backoffice/header', $data);
         $this->load->view('backoffice/Index');
         $this->load->view('templates/backoffice/footer');
@@ -52,7 +60,6 @@ class Home extends CI_Controller {
             $this->loginIndex($data);
         }
     }
-
 
     public function authenticate()
     {

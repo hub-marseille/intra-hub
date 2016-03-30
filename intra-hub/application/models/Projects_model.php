@@ -45,6 +45,14 @@ class Projects_model extends CI_Model
 		return $res;
 	}
 
+	public function projects_by_user_id($uid)
+	{
+		$res = $this->db->where(array('id_owner' => $uid))
+					->get('t_projects')
+			->result_array();
+		return $res;
+	}
+
 	public function add_project()
 	{
 		$data = array(
@@ -53,8 +61,7 @@ class Projects_model extends CI_Model
 			'description' => $this->input->post('description'),
 			'short_description' => $this->input->post('short_description'),
 			'id_status' => 1,
-			//'id_owner' => $this->session->userdata('id')
-			'id_owner' => 1
+			'id_owner' => $this->session->userdata('id')
 		);
 		return $this->db->insert('t_projects', $data);
 		/*try {
@@ -79,9 +86,6 @@ class Projects_model extends CI_Model
 			'main_picture' => $this->input->post('main_picture'),
 			'description' => $this->input->post('description'),
 			'short_description' => $this->input->post('short_description'),
-			'id_status' => 1,
-			//'id_owner' => $this->session->userdata('id')
-			'id_owner' => 1
 		);
 		$this->db->where('id', $id);
 		$this->db->update('t_projects', $data);

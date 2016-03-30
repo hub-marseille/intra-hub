@@ -90,4 +90,19 @@ class Project extends CI_Controller
             <div class="row" id="description">'.$data["description"].'</div>';
         echo json_encode($response);
     }
+
+    public function viewprojectperso()
+    {
+        $id = $this->input->post("id");
+        $data = $this->projectManager->projects_by_id($id);
+        $data = $data[0];
+        $response = '<div class="row" id="name"><h2>'.$data["name"].'</h2></div>
+            <div class="row" id="main_picture"><img src='.base_url()."assets/images/projets/".$data["main_picture"].'></div>
+            <div class="row" id="short_description">'.$data["short_description"].'</div>
+            <div class="row" id="description">'.$data["description"].'</div>
+            <div <a class="waves-effect waves-light btn-large"
+            href="<?php echo base_url().\'backoffice/projects/\'.$id.\'/edit\'; ?>"
+            >Edit project</a>';
+        echo json_encode($response);
+    }
 }
