@@ -13,18 +13,20 @@ class Users_model extends CI_Model
 	public function __construct()
 	{
 		parent::__construct();
+
 	}
 
 	public function signin($login, $password)
 	{
 		$data = array(
 		      'username' => $login,
-			  'password' => $password);
+			  'password' => sha1(htmlentities($password)));
 			  //#Warning : faut modifier la structure de la base et checker si l'utilisateur n'est pas supprimé.
 			  //'deleted' => false);
 		
 		$query = $this->db->get_where($this->table, $data);
 		$res = $query->row_array();
+
 		return $res;
 	}
 
@@ -32,11 +34,14 @@ class Users_model extends CI_Model
 	{
 		$data = array(
 			'username' => $login,
-			'password' => $password,
+			'password' => sha1(htmlentities($password)),
 			'user_right' => 0
 		);
 		$ret =$this->db->insert('t_users', $data);
-		return $ret;
+		if ($res = true)
+			return $this->signin($login, $password);
+		else
+			return $ret;
 	}
 }
 

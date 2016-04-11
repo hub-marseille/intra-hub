@@ -130,7 +130,7 @@ LOCK TABLES `t_users` WRITE;
 
 INSERT INTO `t_users` (`id`, `username`, `password`, `user_right`, `id_picture`, `facebook`, `gplus`, `twitter`, `linkedin`, `deleted`)
 VALUES
-	(1,'cristi_t','toto',0,'',NULL,NULL,NULL,NULL,0);
+	(1,'cristi_t','4c1de1acdcf00f2f05056660c34d466a1f203f8d',0,'',NULL,NULL,NULL,NULL,0);
 
 /*!40000 ALTER TABLE `t_users` ENABLE KEYS */;
 UNLOCK TABLES;
