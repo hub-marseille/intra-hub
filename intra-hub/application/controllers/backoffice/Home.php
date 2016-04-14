@@ -67,8 +67,9 @@ class Home extends CI_Controller {
         $login = $this->input->post('login');
         $pwd = $this->input->post('pwd');
         $ret = $this->login->authenticate($login, $pwd);
-		if ($ret['status'])
+		if ($ret['status']) {
 			echo "ok";
+        }
 		else
 			echo "ko";
         //return json_encode($ret["status"]);

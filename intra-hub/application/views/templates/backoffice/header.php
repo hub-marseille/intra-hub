@@ -22,40 +22,6 @@
             </ul>
         </div>
     </nav>
-    <?php if ($this->session->userdata('id') != null):?>
-    <div class="row">
-        <ul class="side-nav fixed" style="left: 0px;" data-collapsible="accordion">
-            <li id="logo"><h4>IntraHub</h4></li>
-            <li id="subtitle"><h5>Backoffice</h5></li>
-            <li id="profilePic"><img class="responsive-img" src="<?php echo base_url("assets/images/nopic.png"); ?>"></img></li>
-            <li class="no-padding">
-                <ul class="collapsible collapsible-accordion">
-                    <li>
-                        <a id="profil" class="collapsible-header  waves-effect waves-blue active">Profil</a>
-                        <div class="collapsible-body">
-                            <ul>
-                                <li>page profil</li>
-                                <li>mon ziz</li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a id="projets" class="collapsible-header  waves-effect waves-blue">Mes Projets</a>
-                        <div class="collapsible-body">
-                           <?php echo $myProj ?>
-                        </div>
-                    </li>
-                    <li>
-                        <a id="archives" class="collapsible-header  waves-effect waves-blue">Projets Archivés</a>
-                        <div class="collapsible-body">
-                            <?php echo $oldProj ?>
-                        </div>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-    <?php endif;?>
 
 <script type="text/javascript">
 
