@@ -11,16 +11,18 @@
     <script type="text/javascript" src="<?php echo js_url("libraries/angular.min");?>"></script>
     <!-- ctrl & directives angular -->
     <script type="text/javascript" src="<?php echo js_url("intraApp");?>"></script>
-    <script>var base_url = "<?php echo base_url();?>";</script>
+    <script> var base_url = "<?php echo base_url();?>"; </script>
 </head>
 <header>
   <div class="navbar-fixed">
-     <nav class="blue darken-4">
+     <nav class="light-blue darken-1">
        <div class="nav-wrapper">
             <div class="logo-wrapper brand-logo">
                <img class="material-icon epitech-logo" src="<?php echo img_url("epitech.png");?>"></img>
-                  <span>{HUB Marseille}</span>
           	</div>
+            <div class="header-msg">
+              <span>{HUB Marseille}</span>
+            </div>
           	<ul class="right hide-on-med-and-down">
              	<li><a href="<?php echo base_url();?>">Accueil</a></li>
              	<li><a href="<?php echo base_url();?>projectsload">Projets</a></li>

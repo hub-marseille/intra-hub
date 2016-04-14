@@ -1,21 +1,14 @@
 <!DOCTYPE html>
 <html ng-app="intraApp">
   <body ng-controller="accCtrl">
-     <script>
-     </script>
      <div class="container row">
-        <div class="blue draken-4">
-           <div class="center-align white-text z-depth-2">
-             <h1 class="roboto title">{HUB Marseille}</h1>
-           </div>
-        </div>
-        <div class="indigo draken-4 z-depth-2">
+        <div class="light-blue darken-1 z-depth-2">
           <ul class="valign-wrapper">
              <li><h3 class="white-text valign right-shifted roboto">&bull;<span class="little-right-shifted">Le HUB c'est quoi ?</span></h3></li>
          </ul>
         <iframe width="100%" height="500" src="https://www.youtube.com/embed/RP86zLLEEhw" frameborder="0" allowfullscreen></iframe>
      </div>
-     <div class="indigo draken-4 z-depth-2l">
+     <div class="light-blue darken-1 z-depth-2l">
         <ul class="valign-wrapper">
            <li><h3 class="white-text valign right-shifted roboto">&bull;<span class="little-right-shifted">Projets a l'honneur</span></h3></li>
         </ul>
@@ -24,7 +17,7 @@
              <div>
                 <div class="card shadow-on-hover">
                    <div class="card-image waves-effect waves-block waves-light">
-                      <img class="activator" ng-src="{{base_url+'assets/images/projets/' + project.main_picture}}">
+                      <img class="activator no-extend" ng-src="{{base_url+'assets/images/projets/' + project.main_picture}}">
                    </div>
                    <div class="card-content">
                       <span class="card-title activator grey-text text-darken-4">{{project.name}}<i class="material-icons right">more_vert</i></span>
