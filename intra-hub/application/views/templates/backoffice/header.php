@@ -12,16 +12,27 @@
     <title>Hub Epitech Marseille - Backoffice</title>
 </head>
 <body>
-    <nav>
-        <div class="nav-wrapper light-blue darken-1">
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
+<header>
+  <div class="navbar-fixed">
+     <nav class="light-blue darken-1">
+       <div class="nav-wrapper">
+            <div class="logo-wrapper brand-logo">
+               <a href="<?php echo base_url();?>"><img class="material-icon epitech-logo" src="<?php echo img_url("epitech.png");?>"></img></a>
+          	</div>
+            <div class="header-msg">
+              <span>{HUB Marseille}</span>
+            </div>
+          	<ul class="right hide-on-med-and-down">
+                <li><a href="<?php echo base_url()."backoffice";?>">Accueil</a></li>
                 <li><a href="<?php echo base_url()."backoffice/projects";?>">Projets</a></li>
                 <?php if ($this->session->userdata('id') != null):?><li><a href="<?php echo base_url()."backoffice/home/signout";?>">Se déconnecter</a></li>
-				<?php endif;?>
+               	<?php endif;?>
                 <li><a href=""></a></li>
-            </ul>
-        </div>
-    </nav>
+          	</ul>
+     </div>
+  </nav>
+</div>
+</header>
 
 <script type="text/javascript">
 
