@@ -21,9 +21,8 @@ class EpitechLogin_model extends CI_Model
     {
         $cookie = array(
             'id'   => $user['id'],
-            'name' => $user['username'],
-//            'login' => $user['login'],
-            //'authLvl' => $user[''],
+            'login' => $user['username'],
+            'user_right' => $user['user_right'],
             'logged' => true
         );
         $this->session->set_userdata($cookie);

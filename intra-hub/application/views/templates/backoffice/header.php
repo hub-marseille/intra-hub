@@ -24,9 +24,9 @@
             </div>
           	<ul class="right hide-on-med-and-down">
                 <li><a href="<?php echo base_url()."backoffice";?>">Accueil</a></li>
+                <?php if ($this->session->userdata('id') != null && $this->session->userdata('user_right') > 10):?><li><a href="<?php echo base_url()."backoffice/users";?>">Utilisateurs</a></li><?php endif;?>
                 <li><a href="<?php echo base_url()."backoffice/projects";?>">Projets</a></li>
-                <?php if ($this->session->userdata('id') != null):?><li><a href="<?php echo base_url()."backoffice/home/signout";?>">Se déconnecter</a></li>
-               	<?php endif;?>
+                <?php if ($this->session->userdata('id') != null):?><li><a href="<?php echo base_url()."backoffice/home/signout";?>">Se déconnecter</a></li><?php endif;?>
                 <li><a href=""></a></li>
           	</ul>
      </div>

@@ -19,7 +19,7 @@ class Home extends CI_Controller {
 
     public function loginIndex($data)
     {
-        $this->load->view('templates/backoffice/header', $data);
+        $this->load->view('front-office/header.html');
         $this->load->view('backoffice/Login', $data);
         $this->load->view('templates/backoffice/footer', $data);
     }

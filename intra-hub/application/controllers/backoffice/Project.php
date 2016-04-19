@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: otto
- * Date: 3/19/2016
- * Time: 6:22 PM
- */
 
 class Project extends CI_Controller
 {
