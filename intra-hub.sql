@@ -7,7 +7,7 @@
 #
 # Hôte: localhost (MySQL 5.5.42)
 # Base de données: intra-hub
-# Temps de génération: 2016-04-11 08:51:16 +0000
+# Temps de génération: 2016-04-29 14:50:27 +0000
 # ************************************************************
 
 
@@ -18,6 +18,41 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+# Affichage de la table t_event_type
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `t_event_type`;
+
+CREATE TABLE `t_event_type` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `description` text,
+  `default_color` varchar(6) NOT NULL DEFAULT '',
+  `deleted` tinyint(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+# Affichage de la table t_events
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `t_events`;
+
+CREATE TABLE `t_events` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL DEFAULT '',
+  `start` datetime NOT NULL,
+  `end` datetime NOT NULL,
+  `url` int(11) DEFAULT NULL,
+  `id_event_type` int(11) DEFAULT NULL,
+  `color` varchar(6) DEFAULT NULL,
+  `deleted` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 
 # Affichage de la table t_hub_members
@@ -38,7 +73,8 @@ LOCK TABLES `t_hub_members` WRITE;
 
 INSERT INTO `t_hub_members` (`id`, `id_user`, `role`, `deleted`)
 VALUES
-	(1,1,'PrÃ©sident',0);
+	(1,1,'PrÃ©sident',0),
+	(2,2,'RÃ©fÃ©rent Web',0);
 
 /*!40000 ALTER TABLE `t_hub_members` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -130,7 +166,8 @@ LOCK TABLES `t_users` WRITE;
 
 INSERT INTO `t_users` (`id`, `username`, `password`, `user_right`, `id_picture`, `facebook`, `gplus`, `twitter`, `linkedin`, `deleted`)
 VALUES
-	(1,'cristi_t','4c1de1acdcf00f2f05056660c34d466a1f203f8d',0,'',NULL,NULL,NULL,NULL,0);
+	(1,'cristi_t','4c1de1acdcf00f2f05056660c34d466a1f203f8d',42,'',NULL,NULL,NULL,NULL,0),
+	(2,'cristi_b','2811193075f30930ee3a0551ef2b4952959ef3d4',0,'',NULL,NULL,NULL,NULL,0);
 
 /*!40000 ALTER TABLE `t_users` ENABLE KEYS */;
 UNLOCK TABLES;
