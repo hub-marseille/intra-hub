@@ -7,7 +7,7 @@
 #
 # Hôte: localhost (MySQL 5.5.42)
 # Base de données: intra-hub
-# Temps de génération: 2016-04-29 14:50:27 +0000
+# Temps de génération: 2016-05-02 10:00:50 +0000
 # ************************************************************
 
 
@@ -50,6 +50,20 @@ CREATE TABLE `t_events` (
   `id_event_type` int(11) DEFAULT NULL,
   `color` varchar(6) DEFAULT NULL,
   `deleted` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+# Affichage de la table t_events_user
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `t_events_user`;
+
+CREATE TABLE `t_events_user` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id_event` int(11) DEFAULT NULL,
+  `id_user` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
