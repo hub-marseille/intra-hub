@@ -21,13 +21,12 @@ class EpitechLogin_model extends CI_Model
     {
         $cookie = array(
             'id'   => $user['id'],
-            'name' => $user['username'],
-//            'login' => $user['login'],
-            //'authLvl' => $user[''],
+            'login' => $user['username'],
+            'user_right' => $user['user_right'],
             'logged' => true
         );
         $this->session->set_userdata($cookie);
-//		var_dump($this->session->all_userdata());
+		//var_dump($this->session->all_userdata());
     }
 
     public function validateOnCookie()
@@ -62,14 +61,10 @@ class EpitechLogin_model extends CI_Model
 
     public function hubAuthenticate($login, $password)
     {
-
         $this->load->model('Users_model', 'user');
 		$user = $this->user->signin($login, $password);
-        if ($user != false)
-        {
-            return $user;
-        }
-        return false;
+
+        return $user;
     }
 
     public function authenticate($login, $password)
@@ -96,8 +91,11 @@ class EpitechLogin_model extends CI_Model
                     $this->isAuth = true;
                     $ret["status"] = true;
                     $ret["msg"] = "Profile Created!";
-                    if ($user = $this->hubAuthenticate($login, $password) != false);
+                    $user = $this->hubAuthenticate($login, $password);
+                    if ($user != false)
+                    {
                         $this->setCookie($user);
+                    }
                 }
                 else
                 {

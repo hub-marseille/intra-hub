@@ -43,6 +43,13 @@ class Users_model extends CI_Model
 		else
 			return $ret;
 	}
+
+	public function get_users()
+	{
+		$query = $this->db->get_where($this->table);
+
+		return $query->result_array();
+	}
 }
 
 ?>

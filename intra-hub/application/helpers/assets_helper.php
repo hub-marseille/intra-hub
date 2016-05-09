@@ -24,6 +24,14 @@ if (!function_exists('img_url'))
     }
 }
 
+if (!function_exists('doc_url'))
+{
+    function doc_url($nom)
+    {
+        return base_url() . 'assets/documents/' . $nom;
+    }
+}
+
 if (!function_exists('img'))
 {
     function img($nom, $alt = '')

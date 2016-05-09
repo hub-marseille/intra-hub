@@ -12,50 +12,27 @@
     <title>Hub Epitech Marseille - Backoffice</title>
 </head>
 <body>
-    <nav>
-        <div class="nav-wrapper light-blue darken-1">
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
+<header>
+  <div class="navbar-fixed">
+     <nav class="light-blue darken-1">
+       <div class="nav-wrapper">
+            <div class="logo-wrapper brand-logo">
+               <a href="<?php echo base_url();?>"><img class="material-icon epitech-logo" src="<?php echo img_url("epitech.png");?>"></img></a>
+          	</div>
+            <div class="header-msg">
+              <span>{HUB Marseille}</span>
+            </div>
+          	<ul class="right hide-on-med-and-down">
+                <li><a href="<?php echo base_url()."backoffice";?>">Accueil</a></li>
+                <?php if ($this->session->userdata('id') != null && $this->session->userdata('user_right') > 10):?><li><a href="<?php echo base_url()."backoffice/users";?>">Utilisateurs</a></li><?php endif;?>
                 <li><a href="<?php echo base_url()."backoffice/projects";?>">Projets</a></li>
-                <?php if ($this->session->userdata('id') != null):?><li><a href="<?php echo base_url()."backoffice/home/signout";?>">Se déconnecter</a></li>
-				<?php endif;?>
+                <?php if ($this->session->userdata('id') != null):?><li><a href="<?php echo base_url()."backoffice/home/signout";?>">Se déconnecter</a></li><?php endif;?>
                 <li><a href=""></a></li>
-            </ul>
-        </div>
-    </nav>
-    <?php if ($this->session->userdata('id') != null):?>
-    <div class="row">
-        <ul class="side-nav fixed" style="left: 0px;" data-collapsible="accordion">
-            <li id="logo"><h4>IntraHub</h4></li>
-            <li id="subtitle"><h5>Backoffice</h5></li>
-            <li id="profilePic"><img class="responsive-img" src="<?php echo base_url("assets/images/nopic.png"); ?>"></img></li>
-            <li class="no-padding">
-                <ul class="collapsible collapsible-accordion">
-                    <li>
-                        <a id="profil" class="collapsible-header  waves-effect waves-blue active">Profil</a>
-                        <div class="collapsible-body">
-                            <ul>
-                                <li>page profil</li>
-                                <li>mon ziz</li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a id="projets" class="collapsible-header  waves-effect waves-blue">Mes Projets</a>
-                        <div class="collapsible-body">
-                           <?php echo $myProj ?>
-                        </div>
-                    </li>
-                    <li>
-                        <a id="archives" class="collapsible-header  waves-effect waves-blue">Projets Archivés</a>
-                        <div class="collapsible-body">
-                            <?php echo $oldProj ?>
-                        </div>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-    <?php endif;?>
+          	</ul>
+     </div>
+  </nav>
+</div>
+</header>
 
 <script type="text/javascript">
 
