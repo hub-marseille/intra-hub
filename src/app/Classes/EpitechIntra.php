@@ -19,8 +19,7 @@ class EpitechIntra
 	private $password;
 
 	private $intraUri = 'https://intra.epitech.eu/';
-	/* TODO: Change to hub-marseille */
-	private $hubGroup = 'marseille-promo-2019';
+	private $hubGroup = 'hub-marseille';
 
 	/**
 	 * @return boolean
