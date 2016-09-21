@@ -7,6 +7,6 @@ Il faut ensuite paramétrer le fichier .env avec les bons accès la BDD.
 
 Guide d'installation :
 1) Paramétrer un serveur Apache ou Nginx
-1) "php artisan migrate" pour créer les tables dans la base
-2) Accéder au site en local, se connecter dessus avec les pass de l'intra
-3) "php artisan db:seed" va peupler les tables avec des projets et des articles
+2) "php artisan migrate" pour créer les tables dans la base
+3) Accéder au site en local, se connecter dessus avec les pass de l'intra
+4) "php artisan db:seed" va peupler les tables avec des projets et des articles
