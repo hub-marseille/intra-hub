@@ -11,4 +11,3 @@ Vue.component('notification', require('./components/Notification.vue'));
 Vue.component('tweet', require('./components/Tweet.vue'));
 
 require('./components/filters.vue');
-

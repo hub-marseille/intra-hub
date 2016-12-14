@@ -11,8 +11,8 @@
 					<h5>Liens</h5>
 					<ul>
 						<li><a href="https://intra.epitech.eu" target="_blank">Intra EPITECH</a></li>
-						<li><a href="/" target="_blank">Fiche projets</a></li>
-						<li><a href="/" target="_blank">Réglement intérieur</a></li>
+						<li><a href="{{ url('/') }}" target="_blank">Fiche projets</a></li>
+						<li><a href="{{ url('/') }}" target="_blank">Réglement intérieur</a></li>
 					</ul>
 				</div>
 			</div>

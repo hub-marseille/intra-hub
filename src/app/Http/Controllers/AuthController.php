@@ -24,23 +24,22 @@ class AuthController extends Controller
 	public function postLogin(Request $request)
 	{
 		$this->validate($request, [
-			'login' => 'required|max:8',
+			'login' => 'required',
 			'password' => 'required|min:8'
 		]);
 		$remind = (isset($request->remind)) ? (true) : (false);
 
-		$intra = new EpitechIntra();
+		$intra = new EpitechIntra;
 		$intra->auth($request->login, $request->password, $remind);
 
 		if (!$intra->isAuthenticated())
-			return (view('pages.login')->withErrors('Votre login ou votre mot de passe est eronné'));
+			return (view('pages.login')->withErrors(['Votre login ou votre mot de passe est eronné']));
 		session([$this->instance => serialize($intra)]);
 
-		if (count(User::where('login', '=', $intra->getLogin())->get()) == 0)
+		if (!count(User::where('email', $intra->getLogin())->get()))
 		{
 			$user = new User;
-			$user->login = $intra->getLogin();
-			$user->email = $intra->getLogin() . '@epitech.eu';
+			$user->email = $intra->getLogin();
 			$user->password = bcrypt($request->password);
 			$user->save();
 		}

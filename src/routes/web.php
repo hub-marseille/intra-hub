@@ -21,6 +21,9 @@ Route::post('/articles/{id}/{name}', 'ArticlesController@postComment');
 Route::patch('/comment/{id}', 'ArticlesController@patchComment');
 Route::delete('/comment/{id}', 'ArticlesController@deleteComment');
 
+/* Projects */
+Route::get('/projects', 'ProjectsController@getProjectsHome');
+
 /* Team */
 Route::get('/team', 'TeamController@getTeamPage');
 

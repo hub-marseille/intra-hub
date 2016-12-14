@@ -7,9 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
 
-    protected $fillable = array('name', 'email', 'password');
-
-    protected $hidden = array('password');
+    protected $fillable = ['name', 'email', 'password'];
+    protected $hidden = ['password'];
 
 	public function projects()
 	{

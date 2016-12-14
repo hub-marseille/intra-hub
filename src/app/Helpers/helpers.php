@@ -14,7 +14,7 @@ if (!function_exists('meta'))
 	}
 }
 
-if (!function_exists('text_beginning'))
+if (!function_exists('textBeginning'))
 {
 	/**
 	 * @param $str
@@ -22,7 +22,7 @@ if (!function_exists('text_beginning'))
 	 *
 	 * @return string
 	 */
-	function text_beginning($str, $n = 800)
+	function textBeginning($str, $n = 800)
 	{
 		if (strlen($str) <= $n)
 			return ($str);
@@ -32,28 +32,18 @@ if (!function_exists('text_beginning'))
 	}
 }
 
-if (!function_exists('url_friendly'))
-{
-	function url_friendly($str)
-	{
-		$str = str_replace(
-			[
-				'à', 'á', 'â', 'ã', 'ä', 'ç', 'è', 'é', 'ê', 'ë', 'ì', 'í', 'î', 'ï', 'ñ', 'ò', 'ó', 'ô', 'õ', 'ö', 'ù', 'ú', 'û', 'ü', 'ý', 'ÿ',
-				'À', 'Á', 'Â', 'Ã', 'Ä', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Ì', 'Í', 'Î', 'Ï', 'Ñ', 'Ò', 'Ó', 'Ô', 'Õ', 'Ö', 'Ù', 'Ú', 'Û', 'Ü', 'Ý'
-			],
-			[
-				'a', 'a', 'a', 'a', 'a', 'c', 'e', 'e', 'e', 'e', 'i', 'i', 'i', 'i', 'n', 'o', 'o', 'o', 'o', 'o', 'u', 'u', 'u', 'u', 'y', 'y',
-				'A', 'A', 'A', 'A', 'A', 'C', 'E', 'E', 'E', 'E', 'I', 'I', 'I', 'I', 'N', 'O', 'O', 'O', 'O', 'O', 'U', 'U', 'U', 'U', 'Y'
-			],
-			$str);
-		return (str_replace(' ', '-', strtolower($str)));
-	}
-}
-
 if (!function_exists('intra'))
 {
 	function intra()
 	{
 		return (unserialize(session('intraInstance')));
+	}
+}
+
+if (!function_exists('loginFromMail'))
+{
+	function loginFromMail($mail)
+	{
+		return explode('@', $mail)[0];
 	}
 }

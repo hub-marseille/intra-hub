@@ -1,5 +1,5 @@
 @if (isset ($errors) and count($errors) > 0)
-	<notification type="danger">
+	<notification type="danger" icon="alert">
 		<ul>
 			@foreach ($errors->all() as $error)
 				<li>{{ $error }}</li>
@@ -18,7 +18,7 @@
 	</notification>
 @endif
 @if (session('infoNotification'))
-	<notification type="info">
+	<notification type="info" icon="flag">
 		{{ session('infoNotification') }}
 	</notification>
 @endif
